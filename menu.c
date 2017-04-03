@@ -55,14 +55,23 @@ switch(opcion)
 {
 	case 1: 
 
-	printf("Has elegido registrar un nuevo usuario\n");introducirUsuario();break;
+	printf("Has elegido registrar un nuevo usuario\n");
+
+	introducirUsuario();
+ 
+ 	
+ 	
+
 
 	
- 
-	//int i = menu();
 
+	int i = menu();
+	break;
 
-	case 2: printf("Has elegido intrducir un nuevo administrador\n");leerUsuario();break;
+	case 2: printf("Has elegido intrducir iniciar sesión\n");
+	
+
+	leerUsuario();break;
 	case 3: printf("Has elegido intrducir un nuevo jugador\n");break;
 	case 4: printf("puntos jugador\n");break;
 	case 5: printf("usuarios registrados\n");break;
