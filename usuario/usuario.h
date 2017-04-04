@@ -12,10 +12,12 @@ typedef struct
 }Usuario;
 
 void introducirUsuario();
+void introducirid();
+void introducircon();
 
 void leerUsuario();
 
-void verificar();
+void comprobar();
 
 
 

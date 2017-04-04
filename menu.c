@@ -57,7 +57,8 @@ switch(opcion)
 
 	printf("Has elegido registrar un nuevo usuario\n");
 
-	introducirUsuario();
+	introducirid();
+	introducircon();
  
  	
  	
@@ -71,7 +72,7 @@ switch(opcion)
 	case 2: printf("Has elegido intrducir iniciar sesión\n");
 	
 
-	leerUsuario();break;
+	comprobar();break;
 	case 3: printf("Has elegido intrducir un nuevo jugador\n");break;
 	case 4: printf("puntos jugador\n");break;
 	case 5: printf("usuarios registrados\n");break;
