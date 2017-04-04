@@ -18,7 +18,7 @@ void introducircon();
 void leerUsuario();
 
 void comprobar();
-
+void comprobar2();
 
 
 

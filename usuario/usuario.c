@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 void introducirUsuario()
 {
@@ -142,9 +142,7 @@ fprintf(file, "%d\n",contra);
 fclose(file);
 }
 
-void introducirnom(){
 
-}
 void leerUsuario()
 {
   char *c;
@@ -158,7 +156,7 @@ void leerUsuario()
   int a;
   
   //abrir fichero para lectura
-  f = fopen("usuario.txt", "r");
+  f = fopen("usuario(id).txt", "r");
   
   //leer mientras no se llegue al final del fichero EOF
   while ((a = fgetc(f)) != EOF)
@@ -170,9 +168,13 @@ void leerUsuario()
       putchar(a);
 
      
-      printf("\n");
+      
 
     
+  }
+  else{
+
+      printf("\n");
   }
   
     }
@@ -183,64 +185,127 @@ void leerUsuario()
 
 
 }
+//tiene que comprobar una cadena de caracteres (el fichero usuario(id)) con otra cadena del que le mete el usuario. 
+void comprobar()
+{
+char b[6];
+char c[6];
 
-void comprobar(){
+printf("Introduzca el id, recuerda que tienen que contener 5 numeros\n");
+  //fgets(b,10,stdin);
+    fscanf(stdin, "%s", b);
+  fflush(stdin);
+  
+printf("el id elegido es %s\n",b);
 
-  //sscanf(c,"%d",&b);
-   FILE* file;
-   int a[20];
-   char *b;
-   int h;
+
+   FILE* f;
   //char c;
-  //int a;
-   int f;
-   f=0;
-  
+  char a;
+  int q;
+  q=0;
+  int num;
+  num=0;
   //abrir fichero para lectura
-  file = fopen("usuario.txt", "r");
-  
+  f = fopen("usuario(id).txt", "r");
+
   //leer mientras no se llegue al final del fichero EOF
-  while ((h = fgetc(file)) != EOF)
+  while ((a = fgetc(f)) != EOF)
     {
       
+      if (a != '\n')
+      {
+         
+          c[num]=a;
+          num++;     
+      //putchar(a);
 
-    a[f]=h;
      
-      
+      //printf("\n");
+
+        
 
     
   }
+    else{
+//printf("%s\n",c );
+    if(strcmp(b, c)==0){
+              q=1;
+
+        }
+
+  }
   
-    
+}
+    if(q==1){
+      printf("correcto\n");
+    }
+    if(q==0){
+      printf("Incorrecto\n" );
+    }
 
 
   //cerrar fichero
- 
-  int e;
-  int q;
-  printf("Introduzca el id\n");
+  fclose(f);
+}
+//comprueba un caracter del fichero usuario(id) con otro caracter que le mete el usuario. (esta bien)
+void comprobar2()
+{
+char b[20];
+char e;
+printf("Introduzca el id\n");
   fgets(b,10,stdin);
-  sscanf(b,"%d",&e);
-  int tam;
-  tam=0;
-while (a[tam]!='\0') 
-tam++;
-  if(a[tam]==e){
-    q=0;
+  sscanf(b,"%c",&e);
+printf("el id elegido es %c\n",e);
+
+
+   FILE* f;
+  //char c;
+  char a;
+  int q;
+  q=0;
+  
+  //abrir fichero para lectura
+  f = fopen("usuario(id).txt", "r");
+  printf("los id-es del sistema son:\n");
+  //leer mientras no se llegue al final del fichero EOF
+  while ((a = fgetc(f)) != EOF)
+    {
+      if (a != '\n')
+      {
+   
+     
+      putchar(a);
+
+     
+      printf("\n");
+
+        if(a==e){
+              q=1;
+
+        }
+
+    
   }
   
+    }
+    if(q==1){
+      printf("correcto\n");
+    }
+    else{
+      printf("Incorrecto\n" );
+    }
 
-if(q==0){
+
+  //cerrar fichero
+  fclose(f);
 
 
-  printf("Incorrecto\n");
+
+
 
 }
-else{
-  printf("correcto\n");
-}
- fclose(file);
-}
+
 
     
 

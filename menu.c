@@ -59,7 +59,7 @@ switch(opcion)
 
 	introducirid();
 	introducircon();
- 
+ 	//introducirUsuario();
  	
  	
 
