@@ -12,9 +12,9 @@ typedef struct
 }Usuario;
 void clear_if_needed(char *str);
 
-void introducirUsuario();
+//void introducirUsuario();
 void introducirid();
-void introducircon();
+
 
 void leerUsuario();
 

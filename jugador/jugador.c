@@ -49,6 +49,9 @@ void insertarJugador()
   char* str3;
   str3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
+    char* fichero;
+  fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
 
   printf("\n");
   printf("Introduce el nombre del jugador\n");
@@ -57,6 +60,15 @@ void insertarJugador()
   printf("El nombre que has metido es\n");
   tamanoStr=strlen(nombre);
    printf(nombre);
+
+   sprintf(fichero, "%s_.txt", nombre);
+   if(fopen(fichero, "r"))
+   {
+    printf("\nEse Jugador ya existe, tiene que introducir uno nuevo que no este en el sistema\n");
+    
+   }
+   else
+   {
 
 
    printf("\n\nAhora introduce el apellido del jugador\n");
@@ -72,7 +84,7 @@ void insertarJugador()
    printf("Los puntos introducidos son  %d\n", numero);
 
 pasarDatosAFichero(nombre,apellido,numero);
-
+}
 }
 
 void pasarDatosAFichero(char* nom, char* apellido, int num)
@@ -81,13 +93,29 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
   printf("\nHA llegado a ficheros\n");
 
   FILE * file;
+  FILE * file2;
+  FILE * file3;
+
+  char * fichero;
+  fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
+   char * nombre;
+  nombre = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+    char * str;
+  str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+    char * fichero3;
+  fichero3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
+    char * fichero2;
+  fichero2 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
 
   if(! (file = fopen("Jugadores.txt", "r")))
   {
     file = fopen("Jugadores.txt", "w");
      fprintf(file, "%s, %s, %i\n", nom, apellido, num);
 
-  printf("guardado\n");
+  printf("guardado y creado fichero por primera vez\n");
   }
   else
   {
@@ -102,7 +130,123 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
   fclose(file);
 
 
+  sprintf(fichero, "%s_.txt", nom);//para concatenar el nombre del jugador y ".txt"
+
+if(! (file2 = fopen(fichero, "r")))
+  {
+    file2 = fopen(fichero, "w");
+    fprintf(file2, "%i\n", num);
+     
+
+  printf("\n creado fichero por primera vez\n");
+  }
+  else
+  {
+    file2 = fopen(fichero, "a");
+    fprintf(file2, "%i\n", num);
+  }
+fclose(file2);
+     
+
+  printf("\nguardado\n");
+
+  printf("\n");
+  printf("A que usuario le quieres asignar este jugador?\n");//aqui me da error
+
+  fgets(str, MAX_LENGTH, stdin);
+  sscanf(str, "%s\n", nombre);
+
+  sprintf(fichero3, "%s.txt", nombre);
+
+  if(!(fopen(fichero3, "r")))
+  {
+    printf("Este usuario no existe, a si que este jugador esta en modo AGENTE LIBRE\n");
+  }
+  else
+  {
+  file3 = fopen(fichero3, "w");
+  fprintf(file3, "%s, %s, %i\n", nom, apellido, num);
+  fclose(file3);
+  }
+
+free(fichero);
+free(fichero2);
+free(fichero3);
+free(str);
+free(nombre);
+
+
+}
+
+void verPuntosJugador()
+{
+  char* str;
+  char* fichero;
+  char* nombre;
+  char c;
+
+  FILE* f;
+
+  fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  nombre = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
+printf("Introduce el nombre del jugador que quieres ver sus puntos\n");
+
+fgets(str, MAX_LENGTH, stdin);
+sscanf(str, "%s\n", nombre);
+
+sprintf(fichero, "%s_.txt", nombre);
+
+
+if(!(fopen(fichero, "r")))
+{
+  printf("Lo siento, ese jugador no esta\n");
+
+  
+
+}
+else
+{
+  f=fopen(fichero, "r");
+  printf("\n");
+  printf("\nEstos son los puntos que tiene %s\n", nombre);
+
+  while ((c = fgetc(f)) != EOF)
+    {
+
+      if (c != '\n')
+      putchar(c);
+    else
+    {
+      printf("\n");
+    }
+    }
+ 
+  //cerrar fichero
+  fclose(f);
+
+}
+
+free(fichero);
+free(str);
+free(nombre);
+
 
 
 
 }
+
+void puntuarJugador()
+{
+
+
+
+
+}
+
+
+
+
+
+

@@ -32,10 +32,11 @@ char str[MAX_LENGTH];
 	do {
 		printf("\t1. Registrar Usuario \n");
 		printf("\t2. Iniciar sesion usuario\n");
-		printf("\t3. Introducir nuevo Jugador\n");
-		printf("\t4. Ver Puntos por Jugador \n");
-		printf("\t5. Ver Usuarios registrados\n");
-		printf("\t6. Clasificacion final\n");
+		printf("\t3. Ver usuarios registrados\n");
+		printf("\t4. Introducir nuevo Jugador y asignar a usuario\n");
+		printf("\t5. Ver Puntos por Jugador\n");
+		printf("\t6. Ver Todos los jugadores guardados \n");
+		printf("\t7. Puntuar Jugador\n");
 		printf("\n");
 		printf("Seleccione una opción (q para salir): ");
 
@@ -73,9 +74,9 @@ switch(opcion)
 	printf("Has elegido registrar un nuevo usuario\n");
 
 	introducirid();
-	introducircon();
- 	//introducirUsuario();
+	
  	
+ 	ventanaInicial();
  	
 	break;
 
@@ -83,25 +84,39 @@ switch(opcion)
 		printf("Has elegido intrducir iniciar sesión\n");
 	
 
-		comprobar();break;
+		comprobar();
+		ventanaInicial();
+		break;
+
+	case 3: printf("Has elegido ver los usuarios registrados\n");
+	leerUsuario();
+	break;
 	
-	case 3: 
-		printf("Has elegido intrducir un nuevo jugador\n");
+	case 4: 
+		printf("Has elegido introducir un nuevo jugador\n");
 
 		insertarJugador();
 
-
+		ventanaInicial();
 
 
 
 	break;
-	case 4: printf("puntos jugador\n");
+	case 5: printf("puntos jugador\n");
+
+	verPuntosJugador();
+
+	
+	ventanaInicial();
+	break;
+	case 6: printf("Has elegido la opcion de ver todos los jugadores guardados\n");
 
 	leerFichero();
 	ventanaInicial();
 	break;
-	case 5: printf("usuarios registrados\n");break;
-	case 6: printf("Clasificacion\n");break;
+	case 7: printf("Has elegido la opcion de puntuar a jugador\n");
+	puntuarJugador();
+	ventanaInicial();break;
 	
 
 }
