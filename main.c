@@ -10,16 +10,11 @@ int main(void)
 
 
 	printf("Proyecto nuevo en C\n");
+	printf("---------------------\n");
 
+printf("\nBinvenido! ¿Quieres convertirte en el mejor entrenador?\n");
 
-
-	int i = 0;
-	i = menu();
-
-	
-
-	 elegirOpcion(i);
-	 // leerFichero();
+	ventanaInicial();
 	
 	return 0;
 }

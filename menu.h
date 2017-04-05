@@ -4,6 +4,7 @@
 void clear_if_needed(char *str);
 
 int menu();
+void ventanaInicial();
 
 void elegirOpcion(int opcion);
 

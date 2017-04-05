@@ -3,4 +3,7 @@
 
 void leerFichero();
 
+void insertarJugador();
+void pasarDatosAFichero(char* nom, char* apellido, int num);
+
 #endif

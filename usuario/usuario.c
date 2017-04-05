@@ -231,6 +231,7 @@ printf("el id elegido es %s\n",b);
 //printf("%s\n",c );
     if(strcmp(b, c)==0){
               q=1;
+              break;
 
         }
 
@@ -239,11 +240,13 @@ printf("el id elegido es %s\n",b);
 }
     if(q==1){
       printf("correcto\n");
+
     }
     if(q==0){
       printf("Incorrecto\n" );
     }
 
+clear_if_needed(c);
 
   //cerrar fichero
   fclose(f);

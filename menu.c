@@ -2,12 +2,27 @@
 #include <string.h>
 #include "menu.h"
 #include "usuario/usuario.h"
+#include "jugador/jugador.h"
 #define MAX_LENGTH	10
 #define MAX_ASIGNATURAS 5
 
-void clear_if_needed(char *str);
 
 
+void ventanaInicial()
+{
+
+
+printf("\nAdelante, elige una opcion\n");
+printf("----------------\n");
+printf("----------------\n");
+
+int opcion=0;
+opcion = menu();
+elegirOpcion(opcion);
+
+
+
+}
 int menu()
 {
 char str[MAX_LENGTH];
@@ -62,19 +77,29 @@ switch(opcion)
  	//introducirUsuario();
  	
  	
-
-
-	
-
-	int i = menu();
 	break;
 
-	case 2: printf("Has elegido intrducir iniciar sesión\n");
+	case 2: 
+		printf("Has elegido intrducir iniciar sesión\n");
 	
 
-	comprobar();break;
-	case 3: printf("Has elegido intrducir un nuevo jugador\n");break;
-	case 4: printf("puntos jugador\n");break;
+		comprobar();break;
+	
+	case 3: 
+		printf("Has elegido intrducir un nuevo jugador\n");
+
+		insertarJugador();
+
+
+
+
+
+	break;
+	case 4: printf("puntos jugador\n");
+
+	leerFichero();
+	ventanaInicial();
+	break;
 	case 5: printf("usuarios registrados\n");break;
 	case 6: printf("Clasificacion\n");break;
 	
@@ -84,3 +109,4 @@ switch(opcion)
 
 
 }
+
