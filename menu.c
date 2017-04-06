@@ -44,7 +44,7 @@ char str[MAX_LENGTH];
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 6 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 8 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -90,6 +90,7 @@ switch(opcion)
 
 	case 3: printf("Has elegido ver los usuarios registrados\n");
 	leerUsuario();
+	ventanaInicial();
 	break;
 	
 	case 4: 
@@ -101,22 +102,23 @@ switch(opcion)
 
 
 
-	break;
+		break;
 	case 5: printf("puntos jugador\n");
 
-	verPuntosJugador();
+		verPuntosJugador();
 
 	
-	ventanaInicial();
-	break;
+		ventanaInicial();
+		break;
 	case 6: printf("Has elegido la opcion de ver todos los jugadores guardados\n");
 
-	leerFichero();
-	ventanaInicial();
+		leerFichero();
+		ventanaInicial();
 	break;
 	case 7: printf("Has elegido la opcion de puntuar a jugador\n");
-	puntuarJugador();
-	ventanaInicial();break;
+		puntuarJugador();
+		ventanaInicial();break;
+
 	
 
 }

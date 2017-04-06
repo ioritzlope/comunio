@@ -187,27 +187,24 @@ fclose(file);
 
 void leerUsuario()
 {
-  char *c;
-  char g[20];
-  int b;
-	//printf("Mete el id\n");
-  //fgets(g,10,stdin);
-  //sscanf(c,"%d",&b);
+  
+  
+	
 	 FILE* f;
-  //char c;
-  int a;
+  char c;
+  printf("estos son los usuarios guardados\n");
   
   //abrir fichero para lectura
   f = fopen("usuario.txt", "r");
   
   //leer mientras no se llegue al final del fichero EOF
-  while ((a = fgetc(f)) != EOF)
+  while ((c = fgetc(f)) != EOF)
     {
-      if (a != '\n')
+      if (c != '\n')
       {
 	 
      
-      putchar(a);
+      putchar(c);
 
      
       
@@ -302,7 +299,8 @@ printf("el id elegido es %s\n",b);
 char* idUsuario;
 char* str;
 char* nombreFichero;
-
+FILE* file;
+int a;
 idUsuario = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 str = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 nombreFichero = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
@@ -318,6 +316,34 @@ if(!(fopen(nombreFichero, "r")))
 else
 {
   printf("Bienvenido %s\n", idUsuario);
+  printf("\n");
+  printf("Estos son los jugadores que tienes\n");
+  file = fopen(nombreFichero, "r");
+   while ((a = fgetc(file)) != EOF)
+    {
+      if (a != '\n')
+      {
+   
+     
+      putchar(a);
+
+     
+      
+
+    
+  }
+  else{
+
+      printf("\n");
+  }
+  
+    }
+
+
+  //cerrar fichero
+  fclose(file);
+
+
 }
 
 
