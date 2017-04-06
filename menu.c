@@ -81,7 +81,7 @@ switch(opcion)
 	break;
 
 	case 2: 
-		printf("Has elegido intrducir iniciar sesión\n");
+		printf("Has elegido introducir iniciar sesión\n");
 	
 
 		comprobar();

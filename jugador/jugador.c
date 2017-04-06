@@ -240,6 +240,72 @@ free(nombre);
 void puntuarJugador()
 {
 
+  char* str;
+  char* str2;
+  char* nombre;
+  char* fichero;
+  FILE* file;
+   int num = 0;
+   int len=0;
+
+  str = malloc((sizeof(char)*MAX_LENGTH)+1);
+
+  str2 = malloc((sizeof(char)*MAX_LENGTH)+1);
+  nombre = malloc((sizeof(char)*MAX_LENGTH)+1);
+  fichero = malloc((sizeof(char)*MAX_LENGTH)+6);
+
+printf("\nEstos son los jugadores registrados en el sistema\n");
+leerFichero();
+printf("\n");
+printf("Elige el jugador para ver sus puntos\n");
+printf("Para eso introduce el Nombre de ese jugador\n");
+
+fgets(str, MAX_LENGTH, stdin);
+sscanf(str, "%s\n", nombre);
+
+sprintf(fichero, "%s_.txt", nombre);
+
+if(!(fopen(fichero, "r")))
+{
+  printf("El jugador que has introducido no esta\n");
+}
+
+else
+{
+ 
+  printf("Cuantos puntos le quieres dar a este jugador\n");
+
+  fgets(str2, MAX_LENGTH, stdin);
+  len = sscanf(str2, "%i\n", num);
+
+  if(len==0)
+  {
+    printf("No has introducido un numero. Error\n");
+  }
+  else
+  {
+
+
+
+  fopen(fichero, "a");
+  fprintf(file, "%i\n", num);
+
+
+  printf("Puntos guardados correctamente\n");
+    
+ 
+  //cerrar fichero
+  fclose(file);
+  free(str2);
+  free(str);
+  free(fichero);
+  free(nombre);
+}
+
+}
+
+
+
 
 
 
