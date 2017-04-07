@@ -12,7 +12,7 @@ int main(void)
 	printf("Proyecto nuevo en C\n");
 	printf("---------------------\n");
 
-printf("\nBinvenido! ¿Quieres convertirte en el mejor entrenador?\n");
+printf("\nBinvenido! Quieres convertirte en el mejor entrenador?\n");
 
 	ventanaInicial();
 	

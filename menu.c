@@ -4,7 +4,7 @@
 #include "usuario/usuario.h"
 #include "jugador/jugador.h"
 #define MAX_LENGTH	10
-#define MAX_ASIGNATURAS 5
+
 
 
 
@@ -44,7 +44,7 @@ char str[MAX_LENGTH];
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 8 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 7 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -71,53 +71,65 @@ switch(opcion)
 {
 	case 1: 
 
-	printf("Has elegido registrar un nuevo usuario\n");
+		printf("Has elegido registrar un nuevo usuario\n");
 
-	introducirid();
-	
- 	
- 	ventanaInicial();
- 	
-	break;
+		introducirid();
+ 		ventanaInicial();
+ 		break;
+
 
 	case 2: 
+
 		printf("Has elegido introducir iniciar sesión\n");
-	
 
 		comprobar();
 		ventanaInicial();
 		break;
 
-	case 3: printf("Has elegido ver los usuarios registrados\n");
-	leerUsuario();
-	ventanaInicial();
-	break;
+	case 3: 
+
+
+		printf("Has elegido ver los usuarios registrados\n");
+
+		leerUsuario();
+		ventanaInicial();
+		break;
 	
+
 	case 4: 
+
 		printf("Has elegido introducir un nuevo jugador\n");
 
 		insertarJugador();
-
 		ventanaInicial();
-
-
-
 		break;
-	case 5: printf("puntos jugador\n");
+	
+
+	case 5: 
+
+		printf("puntos jugador\n");
 
 		verPuntosJugador();
-
-	
 		ventanaInicial();
 		break;
-	case 6: printf("Has elegido la opcion de ver todos los jugadores guardados\n");
+	
+
+	case 6: 
+
+		printf("Has elegido la opcion de ver todos los jugadores guardados\n");
 
 		leerFichero();
 		ventanaInicial();
-	break;
-	case 7: printf("Has elegido la opcion de puntuar a jugador\n");
+		break;
+	
+
+	case 7: 
+
+		printf("Has elegido la opcion de puntuar a jugador\n");
+
 		puntuarJugador();
-		ventanaInicial();break;
+		ventanaInicial();
+		break;
 
 	
 

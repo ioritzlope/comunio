@@ -169,6 +169,7 @@ clear_if_Needed(str);
   {
   file3 = fopen(fichero3, "a");
   fprintf(file3, "%s, %s\n", nom, apellido);
+  printf("Se ha asignado el jugador %s al usuario %s\n", nom, nombre );
  
   }
 fclose(file3);

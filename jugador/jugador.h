@@ -2,7 +2,6 @@
 #define JUGADOR_H_
 
 void leerFichero();
-
 void insertarJugador();
 void verPuntosJugador();
 void puntuarJugador();
