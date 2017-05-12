@@ -8,16 +8,12 @@
 
 void introducirid()
 {
-printf("\n");
 
-printf("Introduce el id del usuario\n");
 
 int len = 0;
 char *str;
 char *str2;
 char *fichero;
-int id;
-int contra;
 char c;
 str =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
 str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);

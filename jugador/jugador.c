@@ -279,10 +279,10 @@ void puntuarJugador()
    int num = 0;
    int len=0;
 
-  str = malloc((sizeof(char)*MAX_LENGTH)+1);
-  str2 = malloc((sizeof(char)*MAX_LENGTH));
-  nombre = malloc((sizeof(char)*MAX_LENGTH)+1);
-  fichero = malloc((sizeof(char)*MAX_LENGTH)+6);
+  str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  str2 = (char*)malloc((sizeof(char)*MAX_LENGTH));
+  nombre =(char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+6);
 
 
 leerFichero();

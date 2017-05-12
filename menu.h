@@ -1,5 +1,9 @@
-#ifndef MENU_H_
-#define MENU_H_
+#ifndef _MENU_H_
+#define _MENU_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void clear_if_needed(char *str);
 
@@ -8,6 +12,10 @@ void ventanaInicial();
 
 void elegirOpcion(int opcion);
 
+#ifdef __cplusplus
+}
+
 #endif
 
+#endif
 

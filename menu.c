@@ -12,9 +12,12 @@ void ventanaInicial()
 {
 
 
+
 printf("\nAdelante, elige una opcion\n");
 printf("----------------\n");
 printf("----------------\n");
+
+
 
 int opcion=0;
 opcion = menu();
