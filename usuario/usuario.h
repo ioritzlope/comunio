@@ -3,13 +3,8 @@
 
 
 void clear_if_needed(char *str);
-
-//void introducirUsuario();
 void introducirid();
-
-
-void leerUsuario();
-
+int leerUsuario();
 void comprobar();
 
 

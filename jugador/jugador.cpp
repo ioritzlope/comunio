@@ -2,18 +2,24 @@
 #include "jugador.h"
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
+#include <string>
 #define MAX_LENGTH 20
 
+using namespace std;
 
-void leerFichero()
+
+int leerFichero()
 {
 	 FILE* file;
 
 
 	 char c;
-   printf("\nEstos son los jugadores que estan guardados en los ficheros\n");
+   
 
-	 file=fopen("Jugadores.txt","r");
+if(file=fopen("Jugadores.txt","r"))
+{
+  printf("\nEstos son los jugadores que estan guardados en los ficheros\n");
 
 	  while ((c = fgetc(file)) != EOF)
     {
@@ -25,7 +31,15 @@ void leerFichero()
       printf("\n");
     }
     }
- 
+    return 1;
+ }
+
+ else
+ {
+  printf("No hay ningun jugador guardado en el sistema\n");
+  return 0;
+
+ }
   //cerrar fichero
   fclose(file);
 
@@ -44,7 +58,7 @@ void insertarJugador()
 
   char* str2;
   str2 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
-  int tamanoStr=0;
+  
 
   char* str3;
   str3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
@@ -54,12 +68,12 @@ void insertarJugador()
 
 
   printf("\n");
-  printf("Introduce el nombre del jugador\n");
+  cout << "Introduce el nombre del jugador" << endl;
   fgets(str,MAX_LENGTH,stdin);
   sscanf(str,"%s",nombre);
-  printf("El nombre que has metido es\n");
-  tamanoStr=strlen(nombre);
-   printf(nombre);
+  cout << "Datos introducidos hasta el momento" << endl;
+  
+   cout << nombre << endl;
 
    sprintf(fichero, "%s_.txt", nombre);
    if(fopen(fichero, "r"))
@@ -71,17 +85,24 @@ void insertarJugador()
    {
 
 
-   printf("\n\nAhora introduce el apellido del jugador\n");
+   cout << endl <<"Ahora introduce el apellido del jugador" << endl;
    fgets(str2,MAX_LENGTH,stdin);
-  sscanf(str2,"%s",apellido);
-  printf("El apellido que has metido es\n");
+  sscanf(str2,"%[^/n]s",apellido);
+  cout << "Datos introducidos hasta el momento" << endl;
+  
+   cout << nombre << endl;
  
-   printf(apellido);
+   cout << apellido << endl;
 
-   printf("\n\nIntroduce los puntos de este jugador\n");
+   cout << endl << "Introduce los puntos de este jugador" << endl;
 
-   scanf("%i", &numero);
-   printf("Los puntos introducidos son  %d\n", numero);
+   cin >> numero;
+  cout << "Datos introducidos hasta el momento" << endl;
+  
+   cout << nombre << endl;
+ 
+   cout << apellido << endl;
+   cout << numero << endl;
 
 pasarDatosAFichero(nombre,apellido,numero);
 }
@@ -90,7 +111,6 @@ pasarDatosAFichero(nombre,apellido,numero);
 void pasarDatosAFichero(char* nom, char* apellido, int num)
 {
 
-  printf("\nHA llegado a ficheros\n");
 
   FILE * file;
   FILE * file2;
@@ -116,14 +136,14 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
     file = fopen("Jugadores.txt", "w");
      fprintf(file, "%s, %s\n", nom, apellido);
 
-  printf("guardado y creado fichero por primera vez\n");
+  cout << "Jugador guardado correctamente" << endl;
   }
   else
   {
     file = fopen("Jugadores.txt", "a");
      fprintf(file, "%s, %s\n", nom, apellido);
 
-  printf("guardado\n");
+  cout << "Jugador guardado correctamente" << endl;
 
   }
 
@@ -139,7 +159,7 @@ if(! (file2 = fopen(fichero, "r")))
     fprintf(file2, "%i\n", num);
      
 
-  printf("\n creado fichero por primera vez\n");
+  cout << "Asignacion de puntos al jugador satisfactorio" << endl;
   }
   else
   {
@@ -149,17 +169,33 @@ if(! (file2 = fopen(fichero, "r")))
 fclose(file2);
      
 
-  printf("\nguardado\n");
+  
 clear_if_Needed(str);
-  printf("\n");
-  printf("A que usuario le quieres asignar este jugador?\n");//aqui me da error
 
 
+  
+ cout << "Asignar este jugador a usuario: SI/NO" << endl;
+ string resp;
+
+cin >> resp;
+
+if(resp =="no")
+{
+   cout << "Jugador no asignado a ningun usuario";
+
+}
+else
+{
+  cout << "A que usuario le quieres asignar?" << endl;
+
+  clear_if_Needed(str);
 
   fgets(str,MAX_LENGTH,stdin);
   sscanf(str, "%s\n", nombre);
 
   sprintf(fichero3, "%s.txt", nombre);
+
+
 
   if(!(file3 = fopen(fichero3, "r")))
   {
@@ -181,9 +217,16 @@ free(nombre);
 
 
 }
+}
 
 void verPuntosJugador()
 {
+  if(leerFichero()==0)
+  {
+    cout << "Tendras que introducir jugadores" << endl;
+  }
+  else
+  {
   char* str;
   char* fichero;
   char* nombre;
@@ -195,7 +238,7 @@ void verPuntosJugador()
   str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
   nombre = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
   
-  leerFichero();
+  
 
 printf("Introduce el nombre del jugador que quieres ver sus puntos\n");
 
@@ -262,13 +305,21 @@ free(nombre);
 
 
 
-
+}
 
 
 }
 
 void puntuarJugador()
 {
+ if( leerFichero()==0)
+ {
+
+  cout << "Tendras que intrducir jugadores" << endl;
+
+ }
+ else
+ {
 
   char* str;
   char* str2;
@@ -285,7 +336,7 @@ void puntuarJugador()
   fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+6);
 
 
-leerFichero();
+
 printf("\n");
 printf("Elige el jugador para ver sus puntos\n");
 printf("Para eso introduce el Nombre de ese jugador\n");
@@ -337,7 +388,7 @@ else
 
 
 
-
+}
 
 }
 
@@ -355,5 +406,4 @@ void clear_if_Needed(char *str)
       while ( (c = getchar()) != EOF && c != '\n');
     }
 }
-
 

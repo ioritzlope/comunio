@@ -1,9 +1,12 @@
 #include "usuario.h"
-
+#include <iostream>
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define MAX_LENGTH 10
+
+using namespace std;
 
 
 void introducirid()
@@ -18,14 +21,13 @@ char c;
 str =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
 str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
 fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
-//char *str3;
+
 
 
 
 
 fgets(str, MAX_LENGTH, stdin);
 len = sscanf(str,"%s\n",str2);
-
 
 FILE * file;
 FILE *file2;
@@ -44,14 +46,14 @@ else
     file = fopen("usuario.txt", "w");
      fprintf(file, "%s\n", str2);
 
-  printf("\nguardado y creado fichero por primera vez\n");
+  cout << "Usuario guardado correctamente" << endl;
   }
   else
   {
     file = fopen("usuario.txt", "a");
      fprintf(file, "%s\n", str2);
 
-  printf("\nguardado\n");
+ cout << "Usuario guardado correctamente" << endl;
   }
 
 
@@ -63,7 +65,7 @@ if(! (file2 = fopen(fichero, "r")))
     file2 = fopen(fichero, "w");
      
 
-  printf("\n creado fichero por primera vez\n");
+  
   }
   
    fclose(file2);
@@ -82,39 +84,47 @@ fclose(file);
 
 
 
-void leerUsuario()
+int leerUsuario()
 {
   
   
 	
 	 FILE* f;
   char c;
-  printf("estos son los usuarios guardados\n");
+ 
   
   //abrir fichero para lectura
-  f = fopen("usuario.txt", "r");
+
+if(f = fopen("usuario.txt", "r"))
+ {
+  cout << "Estos son los usuarios guardados en el sistema" << endl;
   
   //leer mientras no se llegue al final del fichero EOF
   while ((c = fgetc(f)) != EOF)
     {
       if (c != '\n')
-      {
+        {
 	 
      
-      putchar(c);
+        putchar(c);
 
-     
-      
+       }
+       else
+       {
 
-    
-  }
-  else{
-
-      printf("\n");
-  }
+         printf("\n");
+       }
   
     }
 
+    return 1;
+  } 
+
+  else
+  {
+    cout << "Todavia no hay ningun usuario registrado" << endl;
+    return 0;
+  }
 
   //cerrar fichero
   fclose(f);
@@ -126,7 +136,13 @@ void comprobar()
 {
   
 
+if(leerUsuario()==0)
+{
+  cout << "Primero debers introducir un usuario para iniciar sesion" << endl;
 
+}
+else
+{
 char* idUsuario;
 char* str;
 char* nombreFichero;
@@ -139,6 +155,8 @@ printf("Introduce el id del usuario que quieres buscar\n");
 fgets(str, MAX_LENGTH, stdin);
 sscanf(str, "%s\n",idUsuario);
 sprintf(nombreFichero, "%s.txt", idUsuario);
+
+
 
 if(!(fopen(nombreFichero, "r")))
 {
@@ -186,7 +204,7 @@ free(nombreFichero);
 
 
 
-
+}
 }
 
 

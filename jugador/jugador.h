@@ -1,7 +1,31 @@
 #ifndef JUGADOR_H_
 #define JUGADOR_H_
 
-void leerFichero();
+/*
+#include <string>
+
+
+class Jugador
+{
+private:
+	string nombre;
+	string apellido;
+	int puntos;
+
+public:
+	Jugador();
+	Jugador(string nombre, string apellido, int puntos);
+	~Jugador();
+
+	getNombre(){return nombre;};
+	getApellido(){return apellido;};
+	getPuntos(){return puntos;};
+
+
+};
+*/
+
+int leerFichero();
 void insertarJugador();
 void verPuntosJugador();
 void puntuarJugador();
