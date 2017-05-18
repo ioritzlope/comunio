@@ -4,7 +4,7 @@
 #include <string.h>
 #include <iostream>
 #include <string>
-#define MAX_LENGTH 20
+#define MAX_LENGTH 50
 
 using namespace std;
 
@@ -86,8 +86,9 @@ void insertarJugador()
 
 
    cout << endl <<"Ahora introduce el apellido del jugador" << endl;
+
    fgets(str2,MAX_LENGTH,stdin);
-  sscanf(str2,"%[^/n]s",apellido);
+  sscanf(str2,"%[^\n]s",apellido);
   cout << "Datos introducidos hasta el momento" << endl;
   
    cout << nombre << endl;
