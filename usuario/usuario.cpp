@@ -9,29 +9,12 @@
 using namespace std;
 
 
-void introducirid()
+void introducirid(char* fichero, char* str2)
 {
+  FILE* file2;
+  FILE* file;
 
 
-int len = 0;
-char *str;
-char *str2;
-char *fichero;
-char c;
-str =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
-str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
-fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
-
-
-
-
-
-fgets(str, MAX_LENGTH, stdin);
-len = sscanf(str,"%s\n",str2);
-
-FILE * file;
-FILE *file2;
-sprintf(fichero, "%s.txt", str2);//para concatenar el nombre del usuario y ".txt"
 
 if((file2 = fopen(fichero, "r")))
 {
@@ -74,9 +57,7 @@ fclose(file);
 
 
 
-  free(str);
-  free(str2);
-  free(fichero);
+ 
 
 
 }

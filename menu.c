@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "menu.h"
 #include "usuario/usuario.h"
 #include "jugador/jugador.h"
@@ -76,7 +77,37 @@ switch(opcion)
 
 		printf("Has elegido registrar un nuevo usuario\n");
 
-		introducirid();
+
+		
+		char *str;
+		char *str2;
+		char *fichero;
+
+		str =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
+		str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
+		fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
+
+			printf("Introduce el nombre del usuario a registrar\n");
+
+
+
+		fgets(str, MAX_LENGTH, stdin);
+		sscanf(str,"%s\n",str2);
+
+
+
+		sprintf(fichero, "%s.txt", str2);//para concatenar el nombre del usuario y ".txt"
+
+		printf("Procesando informacion...\n");
+  
+		introducirid(fichero, str2);
+
+  			free(str);
+ 		 free(str2);
+ 		 free(fichero);
+
+
+		//introducirid();
  		ventanaInicial();
  		break;
 

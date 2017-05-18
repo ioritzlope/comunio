@@ -3,7 +3,7 @@
 
 
 void clear_if_needed(char *str);
-void introducirid();
+void introducirid(char* fichero, char* str2);
 int leerUsuario();
 void comprobar();
 
