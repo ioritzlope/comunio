@@ -1,5 +1,5 @@
-#ifndef JUGADOR_H_
-#define JUGADOR_H_
+#ifndef _JUGADOR_H_
+#define _JUGADOR_H_
 
 /*
 #include <string>

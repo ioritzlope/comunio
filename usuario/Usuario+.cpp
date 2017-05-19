@@ -1,3 +1,91 @@
+#include "Usuario+.h"
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+Usuario::Usuario()
+{
+
+  this->nombre = "Nombre";
+  this->apellido = "Apellido";
+  this->puntos = 0;
+}
+
+Usuario::Usuario(string nombre, string apellido, int puntos)
+{
+
+  this->nombre = "Nombre";
+  this->apellido = "Apellido";
+  this->puntos = 0;
+}
+
+
+  string Usuario::getNombre() const
+  {
+    return this->apellido;
+
+  }
+  string Usuario::getApellido() const
+  {
+    return this->apellido;
+
+  }
+  int Usuario::getPuntos() const
+  {
+    return this->puntos;
+
+  }
+/*
+  void Usuario::ordenarUsuarios()
+  {
+
+    /*
+    vector<Usuario> usuarios;
+    //leer fichero
+  char c;
+  ifstream ifs("usuarios.txt");
+  string file_hdr;
+  getline(ifs, file_hdr);
+
+  cout << file_hdr << endl;
+
+  while (!ifs.eof())
+  {
+    Usuario p
+    string p;
+    ifs >> p;
+
+    usuarios.pushBack(p)
+    cout << p << endl;
+  }
+
+
+  ifs.close();
+
+
+
+
+
+
+
+
+
+  }
+
+*/
+  istream& operator>>(istream &in, Usuario &p)
+{
+  string nombre;
+  in >> nombre; //para quitar los parentesis y las comas
+  return in;  
+}
+
+
+
+/*
 #include "usuario.h"
 #include <iostream>
 #include <string>
@@ -194,3 +282,4 @@ free(nombreFichero);
 
 
 
+*/

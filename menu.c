@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "usuario/usuario.h"
+#include "usuario/Usuario+.h"
 #include "jugador/jugador.h"
 #define MAX_LENGTH	10
 
@@ -41,14 +42,14 @@ char str[MAX_LENGTH];
 		printf("\t5. Ver Puntos por Jugador\n");
 		printf("\t6. Ver Todos los jugadores guardados \n");
 		printf("\t7. Puntuar Jugador\n");
-		printf("\n");
+		printf("\t8. Ordenar usuarios por nombre\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 7 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 8 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -116,6 +117,7 @@ switch(opcion)
 
 		printf("Has elegido introducir iniciar sesión\n");
 
+		
 		comprobar();
 		ventanaInicial();
 		break;
@@ -165,7 +167,18 @@ switch(opcion)
 		ventanaInicial();
 		break;
 
+
+	case 8:
+
+		printf("Has elegido ordenar usuarios por nombre\n");
+
+		//ordenarUsuarios();
+		ventanaInicial();
+
+		break;
 	
+
+
 
 }
 
