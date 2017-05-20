@@ -49,7 +49,7 @@ char str[MAX_LENGTH];
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 8 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 9 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -103,7 +103,7 @@ switch(opcion)
   
 		introducirid(fichero, str2);
 
-  			free(str);
+  		free(str);
  		 free(str2);
  		 free(fichero);
 
@@ -171,7 +171,7 @@ switch(opcion)
 	case 8:
 
 		printf("Has elegido ordenar usuarios por nombre\n");
-
+		//ficheroUsuario();
 		//ordenarUsuarios();
 		ventanaInicial();
 

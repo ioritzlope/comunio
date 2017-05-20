@@ -6,47 +6,28 @@
 
 using namespace std;
 
-Usuario::Usuario()
+void Usuario::setNombre(string nombre)
+{
+  this->nombre = nombre;
+}
+void ficheroUsuario()
 {
 
-  this->nombre = "Nombre";
-  this->apellido = "Apellido";
-  this->puntos = 0;
-}
-
-Usuario::Usuario(string nombre, string apellido, int puntos)
-{
-
-  this->nombre = "Nombre";
-  this->apellido = "Apellido";
-  this->puntos = 0;
-}
-
-
-  string Usuario::getNombre() const
-  {
-    return this->apellido;
-
-  }
-  string Usuario::getApellido() const
-  {
-    return this->apellido;
-
-  }
-  int Usuario::getPuntos() const
-  {
-    return this->puntos;
-
-  }
-/*
-  void Usuario::ordenarUsuarios()
-  {
-
-    /*
     vector<Usuario> usuarios;
     //leer fichero
-  char c;
-  ifstream ifs("usuarios.txt");
+ string STRING;
+  ifstream infile;
+  infile.open ("usuario.txt");
+        while(!infile.eof()) // To get you all the lines.
+        {
+          getline(infile,STRING); // Saves the line in STRING.
+          cout<<STRING; // Prints our STRING.
+        }
+  infile.close();
+
+
+
+ /*
   string file_hdr;
   getline(ifs, file_hdr);
 
@@ -61,21 +42,38 @@ Usuario::Usuario(string nombre, string apellido, int puntos)
     usuarios.pushBack(p)
     cout << p << endl;
   }
+*/
+
+ // ifs.close();
 
 
-  ifs.close();
+}
+Usuario::Usuario()
+{
+
+  this->nombre = "Nombre";
+}
+
+Usuario::Usuario(string nombre)
+{
+
+  this->nombre = nombre;
+}
+Usuario::~Usuario()
+{
+
+}
 
 
-
-
-
-
-
-
+  string Usuario::getNombre() const
+  {
+    return this->nombre;
 
   }
+  
+ 
 
-*/
+/*
   istream& operator>>(istream &in, Usuario &p)
 {
   string nombre;

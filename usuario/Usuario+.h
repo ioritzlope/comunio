@@ -10,23 +10,22 @@ class Usuario
 {
 private:
 	string nombre;
-	string apellido;
-	int puntos;
+	
 
 public:
 	Usuario();
-	Usuario(string nombre, string apellido, int puntos);
+	Usuario(string nombre);
 	~Usuario();
 
 	string getNombre() const;
-	string getApellido() const;
-	int getPuntos() const;
-
-	//void ordenarUsuarios();
-	friend istream& operator>>(istream &in, Usuario &p);
+	
+	void setNombre(string nombre);
+	
+	//friend istream& operator>>(istream &in, Usuario &p);
 
 	
 };
+void ficheroUsuario();
 /*
 
 void clear_if_needed(char *str);

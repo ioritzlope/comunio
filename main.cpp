@@ -17,6 +17,7 @@ printf("\nBinvenido! Quieres convertirte en el mejor entrenador?\n");
 */
 	cout << "Proyecto nuevo en C++ " << endl;
 	cout << "Binvenido! Quieres convertirte en el mejor entrenador?" << endl;
+	
 	ventanaInicial();
 	
 	return 0;

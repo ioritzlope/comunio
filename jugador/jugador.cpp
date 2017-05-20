@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #define MAX_LENGTH 50
+#define MAX_PUNTOS 9
 
 using namespace std;
 
@@ -367,7 +368,11 @@ else
   else
   {
 
-
+    if(num > MAX_PUNTOS)
+    {
+      num = MAX_PUNTOS;
+      printf("Has pasado los puntos maximos, se establera el maximo permitido de 9 puntos\n");
+    }
 
   file = fopen(fichero, "a");
   fprintf(file, "%i\n", num);
