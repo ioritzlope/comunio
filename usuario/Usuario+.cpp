@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -13,9 +14,26 @@ void Usuario::setNombre(string nombre)
 void ficheroUsuario()
 {
 
-    vector<Usuario> usuarios;
+    string line;
+    ifstream myfile("usuario.txt");
+    
+
+    while(getline(myfile,line)){
+
+
+      cout<<line<<endl;
+    }
+
+      
+  myfile.close();
+
+   
+   
+
+
+   // vector<Usuario> usuarios;
     //leer fichero
- string STRING;
+/* string STRING;
   ifstream infile;
   infile.open ("usuario.txt");
         while(!infile.eof()) // To get you all the lines.
@@ -23,7 +41,7 @@ void ficheroUsuario()
           getline(infile,STRING); // Saves the line in STRING.
           cout<<STRING; // Prints our STRING.
         }
-  infile.close();
+  infile.close();*/
 
 
 
@@ -45,6 +63,31 @@ void ficheroUsuario()
 */
 
  // ifs.close();
+
+}
+void ordenarUsuario(){
+
+    string line;
+    ifstream myfile("usuario.txt");
+    vector <string> usuarios;
+
+    while(getline(myfile,line)){
+
+      usuarios.push_back(line);
+      
+    }
+
+    sort(usuarios.begin(),usuarios.end());
+
+    vector<string>::iterator it;
+    for(it=usuarios.begin();it!=usuarios.end();it++){
+
+      cout<<*it<<endl;
+    }
+
+      
+  myfile.close();
+
 
 
 }
@@ -68,6 +111,22 @@ Usuario::~Usuario()
   string Usuario::getNombre() const
   {
     return this->nombre;
+
+  }
+  ostream& operator<<(ostream &out, const Usuario &p){
+
+    out<<p.nombre;
+    return out;
+
+
+  }
+  istream& operator>>(istream &in,Usuario &p){
+
+   in>>p.nombre;
+   return in;
+
+    
+
 
   }
   

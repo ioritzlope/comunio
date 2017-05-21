@@ -138,15 +138,15 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
   {
     file = fopen("Jugadores.txt", "w");
      fprintf(file, "%s, %s\n", nom, apellido);
-
-  cout << "Jugador guardado correctamente" << endl;
+printf("Jugador guardado correctamente%s\n" );
+ 
   }
   else
   {
     file = fopen("Jugadores.txt", "a");
      fprintf(file, "%s, %s\n", nom, apellido);
+printf("Jugador guardado correctamente%s\n");
 
-  cout << "Jugador guardado correctamente" << endl;
 
   }
 
@@ -161,8 +161,8 @@ if(! (file2 = fopen(fichero, "r")))
     file2 = fopen(fichero, "w");
     fprintf(file2, "%i\n", num);
      
-
-  cout << "Asignacion de puntos al jugador satisfactorio" << endl;
+printf("Asignacion de puntos al jugador satisfactorio%s\n" );
+  
   }
   else
   {
@@ -176,8 +176,8 @@ fclose(file2);
 clear_if_Needed(str);
 
 
-  
- cout << "Asignar este jugador a usuario: SI/NO" << endl;
+  printf("Asignar este jugador a usuario: SI/NO%s\n" );
+
  string resp;
 
 cin >> resp;
