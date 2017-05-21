@@ -5,7 +5,7 @@
 #include "usuario/usuario.h"
 #include "usuario/Usuario+.h"
 #include "jugador/jugador.h"
-#define MAX_LENGTH	10
+#define MAX_LENGTH	50
 
 
 
@@ -133,10 +133,25 @@ switch(opcion)
 	
 
 	case 4: 
+		char* str4;
+  		str4 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+
+  		char* str5;
+  		str5 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  
+
+  		char* str6;
+ 		 str6 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
 		printf("Has elegido introducir un nuevo jugador\n");
-
-		insertarJugador();
+		printf("Introduze el nombre del jugador\n");
+		fgets(str4,MAX_LENGTH,stdin);
+		printf("Introduzca el apellido del jugador\n");
+		fgets(str5,MAX_LENGTH,stdin);
+		printf("Intoduzca los puntos del jugador\n");
+		fgets(str6,MAX_LENGTH,stdin);
+		insertarJugador(str4,str5,str6);
+		
 		ventanaInicial();
 		break;
 	
@@ -145,7 +160,23 @@ switch(opcion)
 
 		printf("puntos jugador\n");
 
-		verPuntosJugador();
+		 if(leerFichero()==0)
+  		{
+   		 printf("Tendras que introducir jugadores\n");
+  		}
+  		else{
+
+  		char* str;
+  		str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  		printf("Introduce el nombre del jugador que quieres ver sus puntos\n");
+  		fgets(str, MAX_LENGTH, stdin);
+
+  		verPuntosJugador(str);
+
+
+  			}
+
+		//verPuntosJugador();
 		ventanaInicial();
 		break;
 	
