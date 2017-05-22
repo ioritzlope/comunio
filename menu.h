@@ -9,6 +9,8 @@ void clear_if_needed(char *str);
 int menu();
 void ventanaInicial();
 void elegirOpcion(int opcion);
+void llamadaOrdenarUsuarios();
+void llamadaModificarUsuario();
 
 #ifdef __cplusplus
 

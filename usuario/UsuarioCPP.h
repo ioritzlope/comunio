@@ -1,5 +1,5 @@
-#ifndef USUARIO_H_
-#define USUARIO_H_
+#ifndef USUARIOCPP_H_
+#define USUARIOCPP_H_
 
 #include <string>
 #include <iostream>
@@ -23,13 +23,16 @@ public:
 	void setNombre(string nombre);
 	friend ostream& operator<<(ostream &out, const Usuario &p);
 	friend istream& operator>>(istream &in,Usuario &p); 
+	void ordenarUsuario();
+	void modificarUsuario(string nombre);
 	
 	//friend istream& operator>>(istream &in, Usuario &p);
 
 	
 };
 void ficheroUsuario();
-void ordenarUsuario();
+int verificarUsuario(string nombre);
+
 /*
 
 void clear_if_needed(char *str);

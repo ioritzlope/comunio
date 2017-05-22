@@ -1,4 +1,5 @@
-#include "Usuario+.h"
+#include "UsuarioCPP.h"
+#include "usuario.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -65,7 +66,8 @@ void ficheroUsuario()
  // ifs.close();
 
 }
-void ordenarUsuario(){
+
+void Usuario::ordenarUsuario(){
 
     string line;
     ifstream myfile("usuario.txt");
@@ -76,21 +78,88 @@ void ordenarUsuario(){
       usuarios.push_back(line);
       
     }
+    remove("usuario.txt");
+    ofstream file("usuario.txt");
 
     sort(usuarios.begin(),usuarios.end());
 
-    vector<string>::iterator it;
-    for(it=usuarios.begin();it!=usuarios.end();it++){
-
-      cout<<*it<<endl;
+    for(int i=0;i<usuarios.size();i++)
+    {
+      
+      file << usuarios[i] << endl;
     }
-
       
   myfile.close();
 
 
 
 }
+int verificarUsuario(string nombre)
+{
+  
+string line;
+ifstream myfile("usuario.txt");
+vector <string> usuarios;
+
+while(getline(myfile,line))
+{
+
+  if(line == nombre)
+  {
+    cout << "usuario verificado" << endl;
+    return 0;
+    break;
+  }
+}
+return 1;
+
+
+}
+void Usuario::modificarUsuario(string nombre)
+{
+
+  
+
+    string line;
+    ifstream myfile("usuario.txt");
+    vector <Usuario> usuarios;
+
+    while(getline(myfile,line))
+    {
+      Usuario u;
+      u.setNombre(line);
+
+      usuarios.push_back(u);
+      
+    }
+
+    remove("usuario.txt");
+
+    ofstream file("usuario.txt");
+
+    for(int i=0;i<usuarios.size();i++)
+    {
+      if(usuarios[i].getNombre()==this->getNombre())
+      {
+        Usuario c(nombre);
+        usuarios[i] = c;
+        break;
+      }
+      
+    }
+
+      for(int i=0;i<usuarios.size();i++)
+    {
+      cout << usuarios[i].getNombre() << endl;
+      file << usuarios[i] << endl;
+    }
+
+      file.close();
+  myfile.close();
+
+}
+
+
 Usuario::Usuario()
 {
 

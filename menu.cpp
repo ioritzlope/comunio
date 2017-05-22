@@ -3,11 +3,18 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "usuario/usuario.h"
-#include "usuario/Usuario+.h"
+#include "usuario/UsuarioCPP.h"
 #include "jugador/jugador.h"
+#include "jugador/JugadorCPP.h"
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <algorithm>
+
 #define MAX_LENGTH	50
 
-
+using namespace std;
 
 
 void ventanaInicial()
@@ -43,6 +50,7 @@ char str[MAX_LENGTH];
 		printf("\t6. Ver Todos los jugadores guardados \n");
 		printf("\t7. Puntuar Jugador\n");
 		printf("\t8. Ordenar usuarios por nombre\n");
+		printf("\t9. Modificar nombre de usuario\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
@@ -133,6 +141,7 @@ switch(opcion)
 	
 
 	case 4: 
+	/*
 		char* str4;
   		str4 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
@@ -150,7 +159,8 @@ switch(opcion)
 		fgets(str5,MAX_LENGTH,stdin);
 		printf("Intoduzca los puntos del jugador\n");
 		fgets(str6,MAX_LENGTH,stdin);
-		insertarJugador(str4,str5,str6);
+		*/
+		insertarJugador();
 		
 		ventanaInicial();
 		break;
@@ -202,13 +212,21 @@ switch(opcion)
 	case 8:
 
 		printf("Has elegido ordenar usuarios por nombre\n");
-		ficheroUsuario();
-		//ordenarUsuarios();
+		
+		llamadaOrdenarUsuarios();
 		ventanaInicial();
 
 		break;
 	
 
+	case 9:
+
+	cout << "Has elegido modificar usuario por nombre" << endl;
+
+	llamadaModificarUsuario();
+	cout << "usuarios ordenados alfabeticamente y guardados en fichero" << endl;
+	ventanaInicial();
+	break;
 
 
 }
@@ -217,3 +235,46 @@ switch(opcion)
 
 }
 
+void llamadaOrdenarUsuarios()
+{
+	Usuario u("");
+
+
+u.ordenarUsuario();
+	
+}
+void llamadaModificarUsuario()
+{
+	Usuario a("");
+	
+	if(leerUsuario()==0)
+	{
+		cout << "Primero debes introducir usuarios" << endl;
+	}
+
+	else
+	{	
+		
+
+		cout << "Que usuario quieres cambiar?" << endl;
+		string nombre;
+		cin >> nombre;
+		a.setNombre(nombre);
+
+		if(verificarUsuario(nombre)==0)
+		{
+
+		cout << "Como quieres que se llame?" << endl;
+		string nuevoNombre;
+		cin >>nuevoNombre;
+
+
+
+		a.modificarUsuario(nuevoNombre);
+		}
+		else
+		{
+			cout << "usuario no encontrado" << endl;
+		}
+	}
+}

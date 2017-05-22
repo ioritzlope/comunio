@@ -3,7 +3,7 @@
 #include "menu.h"
 #include "jugador/jugador.h"
 #include "usuario/usuario.h"
-#include "usuario/usuario+.h"
+#include "usuario/UsuarioCPP.h"
 
 using namespace std;
 
