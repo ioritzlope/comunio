@@ -11,7 +11,8 @@ void ventanaInicial();
 void elegirOpcion(int opcion);
 void llamadaOrdenarUsuarios();
 void llamadaModificarUsuario();
-
+void llamadaeliminarusuario();
+void llamadausuariojugador();
 #ifdef __cplusplus
 
 }

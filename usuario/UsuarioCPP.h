@@ -25,6 +25,8 @@ public:
 	friend istream& operator>>(istream &in,Usuario &p); 
 	void ordenarUsuario();
 	void modificarUsuario(string nombre);
+	void eliminarUsuario(string nombre);
+	void usuariojugador(string nombre);
 	
 	//friend istream& operator>>(istream &in, Usuario &p);
 

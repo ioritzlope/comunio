@@ -51,13 +51,14 @@ char str[MAX_LENGTH];
 		printf("\t7. Puntuar Jugador\n");
 		printf("\t8. Ordenar usuarios por nombre\n");
 		printf("\t9. Modificar nombre de usuario\n");
+		printf("\t10.Eliminar usuario\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 9 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 10 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -227,6 +228,22 @@ switch(opcion)
 	cout << "usuarios ordenados alfabeticamente y guardados en fichero" << endl;
 	ventanaInicial();
 	break;
+	
+	case 10:
+
+	cout<<"Has elegido eliminar usuario por nombre"<<endl;
+
+	llamadaeliminarusuario();
+	ventanaInicial();
+	break;
+
+	case 11:
+
+	cout<<"Has elegido ver los jugadores de cada usuario";
+	llamadausuariojugador();
+
+
+
 
 
 }
@@ -246,7 +263,18 @@ u.ordenarUsuario();
 void llamadaModificarUsuario()
 {
 	Usuario a("");
-	
+	string nombre;
+	char* ayuda1;
+	char* ayuda2;
+	ayuda1=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+	ayuda2=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+	char *str2;
+	char *fichero;
+	str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
+	fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
+	vector <string> vector;
+
+
 	if(leerUsuario()==0)
 	{
 		cout << "Primero debes introducir usuarios" << endl;
@@ -257,24 +285,105 @@ void llamadaModificarUsuario()
 		
 
 		cout << "Que usuario quieres cambiar?" << endl;
-		string nombre;
+		
 		cin >> nombre;
 		a.setNombre(nombre);
 
 		if(verificarUsuario(nombre)==0)
 		{
 
+		sscanf(nombre.c_str(), "%s\n",ayuda1);
+        sprintf(ayuda2, "%s.txt", ayuda1);
+        remove(ayuda2);
+
 		cout << "Como quieres que se llame?" << endl;
 		string nuevoNombre;
 		cin >>nuevoNombre;
 
+		sscanf(nuevoNombre.c_str(), "%s\n",str2);
+        sprintf(fichero, "%s.txt", str2);
+        ofstream ofs(fichero);
+        
+
 
 
 		a.modificarUsuario(nuevoNombre);
+
+		cout<<"usuario eliminado correctamente"<<endl;
 		}
 		else
 		{
 			cout << "usuario no encontrado" << endl;
 		}
 	}
+}
+void llamadaeliminarusuario(){
+string nombre;
+
+
+	Usuario c("");
+if(leerUsuario()==0){
+
+	cout<<"primero introduzca un usuario"<<endl;
+}
+else{
+
+
+cout<<"Introduzca el nombre del usuario que quieres eliminar"<<endl;
+cin>>nombre;
+if(verificarUsuario(nombre)==0){
+	cout<<"usuario encontrado"<<endl;
+	c.eliminarUsuario(nombre);
+	cout<<"....Usuario correctamente eliminado"<<endl;
+
+}
+else{
+
+
+	cout<<"usuario no encontrado"<<endl;
+}
+
+
+
+
+
+}
+
+
+
+
+}
+void llamadausuariojugador(){
+
+
+string nombre;
+if(leerUsuario()==0){
+
+	cout<<"primero introduzca un usuario"<<endl;
+}
+else{
+	cout<<"¿De que usuario quieres ver?"<<endl;
+	cin>>nombre;
+
+if(verificarUsuario(nombre)==0){
+	
+
+	Usuario usu("");
+	usu.usuariojugador(nombre);
+
+}
+else{
+	cout<<"usuario no encontrado"<<endl;
+}
+
+}
+
+
+
+
+
+
+
+
+
 }

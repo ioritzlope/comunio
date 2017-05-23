@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#define MAX_LENGTH 20
 
 using namespace std;
 
@@ -118,7 +119,6 @@ return 1;
 void Usuario::modificarUsuario(string nombre)
 {
 
-  
 
     string line;
     ifstream myfile("usuario.txt");
@@ -141,6 +141,7 @@ void Usuario::modificarUsuario(string nombre)
     {
       if(usuarios[i].getNombre()==this->getNombre())
       {
+
         Usuario c(nombre);
         usuarios[i] = c;
         break;
@@ -156,6 +157,69 @@ void Usuario::modificarUsuario(string nombre)
 
       file.close();
   myfile.close();
+
+}
+void Usuario::eliminarUsuario(string nombre){
+int pos;
+char* ayuda1;
+char* ayuda2;
+ayuda1=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+ayuda2=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+string line;
+
+
+    ifstream myfile("usuario.txt");
+    vector <Usuario> usuarios;
+
+    while(getline(myfile,line))
+    {
+      Usuario u;
+      u.setNombre(line);
+
+      usuarios.push_back(u);
+      
+    }
+    remove("usuario.txt");
+
+    ofstream file("usuario.txt");
+  for(int i=0;i<usuarios.size();i++)
+    {
+      if(usuarios[i].getNombre()==nombre)
+      {
+      
+        sscanf(nombre.c_str(), "%s\n",ayuda1);
+        sprintf(ayuda2, "%s.txt", ayuda1);
+        remove(ayuda2);
+        usuarios.erase(usuarios.begin()+i);
+        
+        break;
+        
+      }
+      
+    }
+    for(int i=0;i<usuarios.size();i++){
+       file << usuarios[i] << endl;
+
+
+
+
+    }
+
+        file.close();
+  myfile.close();
+
+
+
+
+}
+void Usuario ::usuariojugador(string nombre){
+	vector<string>usuarios;
+	vector<string>jugador;
+
+	
+
+
+
 
 }
 
