@@ -344,7 +344,7 @@ void llamadaeliminarusuario(){
 string nombre;
 
 
-	Usuario c("");
+	Usuario *c=new Usuario("");
 if(leerUsuario()==0){
 
 	cout<<"primero introduzca un usuario"<<endl;
@@ -353,10 +353,11 @@ else{
 
 
 cout<<"Introduzca el nombre del usuario que quieres eliminar"<<endl;
-cin>>nombre;
-if(verificarUsuario(nombre)==0){
+//cin>>nombre;
+cin>>*c;
+if(verificarUsuario(c->getNombre())==0){
 	cout<<"usuario encontrado"<<endl;
-	c.eliminarUsuario(nombre);
+	c->eliminarUsuario();
 	cout<<"....Usuario correctamente eliminado"<<endl;
 
 }
@@ -378,6 +379,7 @@ else{
 }
 void llamadausuariojugador(){
 
+	Usuario *usu=new Usuario("");
 
 string nombre;
 if(leerUsuario()==0){
@@ -386,13 +388,13 @@ if(leerUsuario()==0){
 }
 else{
 	cout<<"¿De que usuario quieres ver?"<<endl;
-	cin>>nombre;
+	//cin>>nombre;
+	cin>>*usu;
 
-if(verificarUsuario(nombre)==0){
+if(verificarUsuario(usu->getNombre())==0){
 	
 
-	Usuario usu("");
-	usu.usuariojugador(nombre);
+	usu->usuariojugador();
 
 }
 else{

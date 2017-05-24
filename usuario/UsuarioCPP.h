@@ -25,15 +25,16 @@ public:
 	friend istream& operator>>(istream &in,Usuario &p); 
 	void ordenarUsuario();
 	void modificarUsuario(string nombre);
-	void eliminarUsuario(string nombre);
-	void usuariojugador(string nombre);
+	void eliminarUsuario();
+	void usuariojugador();
 	
-	//friend istream& operator>>(istream &in, Usuario &p);
+	
 
 	
 };
 void ficheroUsuario();
 int verificarUsuario(string nombre);
+ istream& operator>>(istream &in, Usuario &p);
 
 /*
 

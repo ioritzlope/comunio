@@ -161,7 +161,7 @@ void Usuario::modificarUsuario(string nombre)
   myfile.close();
 
 }
-void Usuario::eliminarUsuario(string nombre){
+void Usuario::eliminarUsuario(){
 int pos;
 char* ayuda1;
 char* ayuda2;
@@ -187,7 +187,7 @@ string line;
       
     }
     remove("usuario.txt");
-    sscanf(nombre.c_str(), "%s\n",ayuda4);
+    sscanf(this->nombre.c_str(), "%s\n",ayuda4);
     sprintf(ayuda4, "%s.txt", fichero);
     remove(fichero);
 
@@ -198,7 +198,7 @@ string line;
       if(usuarios[i].getNombre()==nombre)
       {
       
-        sscanf(nombre.c_str(), "%s\n",ayuda1);
+        sscanf(this->nombre.c_str(), "%s\n",ayuda1);
         sprintf(ayuda2, "%s.txt", ayuda1);
         remove(ayuda2);
         usuarios.erase(usuarios.begin()+i);
@@ -227,12 +227,12 @@ string line;
 
 
 }
-void Usuario ::usuariojugador(string nombre)
+void Usuario ::usuariojugador()
 {
   char* str2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
    char* fichero = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
 
-	sscanf(nombre.c_str(), "%s\n",str2);
+	sscanf(this->nombre.c_str(), "%s\n",str2);
         sprintf(fichero, "%s.txt", str2);
 
       string line;
@@ -289,17 +289,27 @@ Usuario::~Usuario()
 
 
   }
-  istream& operator>>(istream &in,Usuario &p){
+  /*istream& operator>>(istream &in,Usuario &p){
 
    in>>p.nombre;
    return in;
 
     
 
+*/
+ //}
+ istream& operator>>(istream &in, Usuario &p){
 
-  }
-  
- 
+ 	string a;
+ 	
+
+ 	cout<<"nombre: "<<endl;
+ 	cin>>a;
+ 	
+ 	p.setNombre(a);
+
+ 	return in;
+ }
 
 /*
   istream& operator>>(istream &in, Usuario &p)
