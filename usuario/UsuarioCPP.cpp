@@ -155,6 +155,8 @@ void Usuario::modificarUsuario(string nombre)
       file << usuarios[i] << endl;
     }
 
+    
+
       file.close();
   myfile.close();
 
@@ -163,11 +165,16 @@ void Usuario::eliminarUsuario(string nombre){
 int pos;
 char* ayuda1;
 char* ayuda2;
+char* ayuda4;
+char* fichero;
 ayuda1=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 ayuda2=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+ayuda4=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+fichero=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 string line;
 
 
+    
     ifstream myfile("usuario.txt");
     vector <Usuario> usuarios;
 
@@ -180,6 +187,10 @@ string line;
       
     }
     remove("usuario.txt");
+    sscanf(nombre.c_str(), "%s\n",ayuda4);
+    sprintf(ayuda4, "%s.txt", fichero);
+    remove(fichero);
+
 
     ofstream file("usuario.txt");
   for(int i=0;i<usuarios.size();i++)
@@ -207,15 +218,40 @@ string line;
 
         file.close();
   myfile.close();
+  free(ayuda1);
+  free(ayuda4);
+  free(ayuda2);
+  free(fichero);
 
 
 
 
 }
-void Usuario ::usuariojugador(string nombre){
-	vector<string>usuarios;
-	vector<string>jugador;
+void Usuario ::usuariojugador(string nombre)
+{
+  char* str2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
+   char* fichero = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
 
+	sscanf(nombre.c_str(), "%s\n",str2);
+        sprintf(fichero, "%s.txt", str2);
+
+      string line;
+       ifstream myfile(fichero);
+        
+     
+       while(getline(myfile,line))
+       {
+      
+
+       cout << line << endl;
+      
+       }
+
+      
+	
+myfile.close();
+free(str2);
+free(fichero);
 	
 
 

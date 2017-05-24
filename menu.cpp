@@ -52,13 +52,14 @@ char str[MAX_LENGTH];
 		printf("\t8. Ordenar usuarios por nombre\n");
 		printf("\t9. Modificar nombre de usuario\n");
 		printf("\t10.Eliminar usuario\n");
+		printf("\t11.Ver jugadores que tiene un usuario\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 10 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 11 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -242,7 +243,7 @@ switch(opcion)
 	cout<<"Has elegido ver los jugadores de cada usuario";
 	llamadausuariojugador();
 
-
+break;
 
 
 
@@ -308,6 +309,8 @@ void llamadaModificarUsuario()
 
 
 		a.modificarUsuario(nuevoNombre);
+
+
 
 		cout<<"usuario eliminado correctamente"<<endl;
 		}
