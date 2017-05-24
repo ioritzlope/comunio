@@ -308,7 +308,8 @@ void llamadaModificarUsuario()
          ifs.close();
          ofstream file(ayuda2);
          file.clear();
-        remove(ayuda2);
+
+       
 
 		cout << "Como quieres que se llame?" << endl;
 		string nuevoNombre;
@@ -335,6 +336,7 @@ void llamadaModificarUsuario()
 		{
 			cout << "usuario no encontrado" << endl;
 		}
+		remove(ayuda2);
 	}
 }
 void llamadaeliminarusuario(){
