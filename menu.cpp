@@ -306,8 +306,8 @@ void llamadaModificarUsuario()
         	jugadores.push_back(line);
         }
          ifs.close();
-         ofstream file(ayuda2);
-         file.clear();
+         
+         
 
        
 
@@ -336,8 +336,9 @@ void llamadaModificarUsuario()
 		{
 			cout << "usuario no encontrado" << endl;
 		}
-		remove(ayuda2);
+		
 	}
+	remove(ayuda2);
 }
 void llamadaeliminarusuario(){
 string nombre;
