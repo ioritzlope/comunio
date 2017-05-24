@@ -242,6 +242,7 @@ switch(opcion)
 
 	cout<<"Has elegido ver los jugadores de cada usuario";
 	llamadausuariojugador();
+	ventanaInicial();
 
 break;
 
@@ -273,7 +274,7 @@ void llamadaModificarUsuario()
 	char *fichero;
 	str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
 	fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
-	vector <string> vector;
+	vector <string> jugadores;
 
 
 	if(leerUsuario()==0)
@@ -290,11 +291,23 @@ void llamadaModificarUsuario()
 		cin >> nombre;
 		a.setNombre(nombre);
 
+
 		if(verificarUsuario(nombre)==0)
 		{
-
+			
 		sscanf(nombre.c_str(), "%s\n",ayuda1);
         sprintf(ayuda2, "%s.txt", ayuda1);
+
+        ifstream ifs(ayuda2);
+        string line;
+
+        while(getline(ifs,line))
+        {
+        	jugadores.push_back(line);
+        }
+         ifs.close();
+         ofstream file(ayuda2);
+         file.clear();
         remove(ayuda2);
 
 		cout << "Como quieres que se llame?" << endl;
@@ -304,9 +317,13 @@ void llamadaModificarUsuario()
 		sscanf(nuevoNombre.c_str(), "%s\n",str2);
         sprintf(fichero, "%s.txt", str2);
         ofstream ofs(fichero);
-        
 
+        for (int i=0;i< jugadores.size();i++)
+        {
+        	ofs << jugadores[i] << endl;
+        }      
 
+		ofs.close();
 
 		a.modificarUsuario(nuevoNombre);
 
