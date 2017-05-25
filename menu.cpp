@@ -53,13 +53,14 @@ char str[MAX_LENGTH];
 		printf("\t9. Modificar nombre de usuario\n");
 		printf("\t10.Eliminar usuario\n");
 		printf("\t11.Ver jugadores que tiene un usuario\n");
+		printf("\t12.Ver jugadores registrados con sus puntos\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 11 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 12 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -143,25 +144,7 @@ switch(opcion)
 	
 
 	case 4: 
-	/*
-		char* str4;
-  		str4 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
-
-  		char* str5;
-  		str5 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
-  
-
-  		char* str6;
- 		 str6 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
-
-		printf("Has elegido introducir un nuevo jugador\n");
-		printf("Introduze el nombre del jugador\n");
-		fgets(str4,MAX_LENGTH,stdin);
-		printf("Introduzca el apellido del jugador\n");
-		fgets(str5,MAX_LENGTH,stdin);
-		printf("Intoduzca los puntos del jugador\n");
-		fgets(str6,MAX_LENGTH,stdin);
-		*/
+	
 		insertarJugador();
 		
 		ventanaInicial();
@@ -226,7 +209,7 @@ switch(opcion)
 	cout << "Has elegido modificar usuario por nombre" << endl;
 
 	llamadaModificarUsuario();
-	cout << "usuarios ordenados alfabeticamente y guardados en fichero" << endl;
+	
 	ventanaInicial();
 	break;
 	
@@ -244,8 +227,12 @@ switch(opcion)
 	llamadausuariojugador();
 	ventanaInicial();
 
-break;
+	break;
 
+	case 12:
+	cout << "Has decidido ver la clasificacion de mejores jugadores" << endl;
+	llamadaPuntosJugador();
+	ventanaInicial();
 
 
 }
@@ -256,7 +243,7 @@ break;
 
 void llamadaOrdenarUsuarios()
 {
-	Usuario u("");
+	Usuario u;
 
 
 u.ordenarUsuario();
@@ -264,7 +251,7 @@ u.ordenarUsuario();
 }
 void llamadaModificarUsuario()
 {
-	Usuario a("");
+	Usuario a;
 	string nombre;
 	char* ayuda1;
 	char* ayuda2;
@@ -377,7 +364,8 @@ else{
 
 
 }
-void llamadausuariojugador(){
+void llamadausuariojugador()
+{
 
 	Usuario *usu=new Usuario("");
 
@@ -406,9 +394,12 @@ else{
 
 
 
+}
 
-
-
+void llamadaPuntosJugador()
+{
+	Jugador jugador;
+	jugador.verPuntosJugador();
 
 
 }

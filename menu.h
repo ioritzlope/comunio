@@ -13,6 +13,7 @@ void llamadaOrdenarUsuarios();
 void llamadaModificarUsuario();
 void llamadaeliminarusuario();
 void llamadausuariojugador();
+void llamadaPuntosJugador();
 #ifdef __cplusplus
 
 }

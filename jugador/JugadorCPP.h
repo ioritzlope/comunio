@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+
+int leerPuntosJugador(string fichero);
 class Jugador
 {
 private:
@@ -17,19 +19,26 @@ public:
 	Jugador(string nombre, string apellido, int puntos);
 	~Jugador();
 
-	string getNombre(){return nombre;};
-	string getApellido(){return apellido;};
-	int getPuntos(){return puntos;};
+	string getNombre() const;
+	string getApellido() const;
+	int getPuntos() const;
+	void setNombre(string nombre);
+	void setApellido(string apellido);
+	void setPuntos(int puntos);
+
+	void verPuntosJugador();
+
 
 
 };
 
-
+/*
 int leerFichero();
 void insertarJugador();
 void verPuntosJugador(char* str);
 void puntuarJugador();
 void pasarDatosAFichero(char* nom, char* apellido, int num);
 void clear_if_Needed(char *str);
+*/
 
 #endif

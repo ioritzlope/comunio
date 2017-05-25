@@ -1,15 +1,179 @@
 #include <stdio.h>
 #include "JugadorCPP.h"
+#include "jugador.h"
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <fstream>
+#include <algorithm>
 #include <string>
+#include <vector>
 #define MAX_LENGTH 50
 #define MAX_PUNTOS 9
 
 using namespace std;
 
 
+Jugador::Jugador()
+{
+  this->nombre = "";
+  this->apellido = "";
+  this->puntos = 0;
+
+}
+ Jugador::Jugador(string nombre, string apellido, int puntos)
+  {
+    this->nombre = nombre;
+  this->apellido = apellido;
+  this->puntos = puntos;
+
+  }
+ Jugador::~Jugador()
+  {
+
+  }
+
+  string Jugador::getNombre() const
+  {
+    return nombre;
+  }
+
+  string Jugador::getApellido() const
+  {
+    return apellido;
+  }
+  int Jugador::getPuntos() const
+  {
+    return puntos;
+  }
+
+  void Jugador::setNombre(string nombre)
+  {
+    this->nombre = nombre;
+  }
+  void Jugador::setApellido(string apellido)
+  {
+    this->apellido = apellido;
+  }
+  void Jugador::setPuntos(int puntos)
+  {
+    this->puntos = puntos;
+  }
+
+  void Jugador::verPuntosJugador()
+  {
+    if(leerFichero()==0)
+    {
+      cout << "primero introduce jugadores" << endl;
+    }
+    else
+    {
+      Jugador jugador;
+    
+    ifstream myfile("Jugadores.txt");
+    string line;
+    string coma = ", ";
+    string blanco =" ";
+    vector <Jugador> jugadores;
+
+    while(getline(myfile,line))
+    {
+      size_t found =line.find(coma);
+      
+
+        
+        string nombre = line.substr(0, found);
+        
+        jugador.setNombre(nombre);
+
+
+       
+      
+        size_t found2 = line.find(blanco);
+      
+        
+        string apellido = line.substr(found+2, found2+1);
+        
+        jugador.setApellido(apellido);
+
+      jugadores.push_back(jugador);
+
+    }
+    myfile.close();
+    for(int i=0; i< jugadores.size();i++)
+    {
+      string fichero;
+      string line2;
+
+      string nombre = jugadores[i].getNombre();
+
+      fichero = nombre + "_.txt";
+      
+      jugadores[i].setPuntos(leerPuntosJugador(fichero));
+       
+
+
+
+    }
+    for(int i=0; i< jugadores.size();i++)
+    {
+      for(int j=0;j<jugadores.size();j++)
+      {
+
+        if(jugadores[i].getPuntos()>jugadores[j].getPuntos())
+        {
+          Jugador aux;
+          aux = jugadores[i];
+          jugadores[i]=jugadores[j];
+          jugadores[j]=aux;
+
+        }
+      
+      }
+       
+    }
+
+   
+
+    cout <<"Datos de los jugadores ordenados" << endl;
+    for(int i=0; i< jugadores.size();i++)
+    {
+      cout<<"------------" << endl;
+      cout << jugadores[i].getNombre() << " " << jugadores[i].getApellido()<<" " << jugadores[i].getPuntos() << endl;
+
+       
+    }
+
+ 
+  }
+ 
+}
+int leerPuntosJugador(string fichero)
+  {
+    
+   ifstream myfile2(fichero.c_str());
+
+   string line2;
+   string aux;
+   
+   vector <int> puntosTotales;
+int puntos=0;
+    
+   while(getline(myfile2,line2))
+   {
+     puntos = puntos + atoi(line2.c_str());
+    
+    
+
+   }
+
+
+   myfile2.close();
+   return puntos;
+   
+  }
+
+/*
 int leerFichero()
 {
 	 FILE* file;
@@ -233,7 +397,7 @@ void verPuntosJugador(char* str)
  /* if(leerFichero()==0)
   {
     cout << "Tendras que introducir jugadores" << endl;
-  }*/
+  }
   
  // char* str;
   char* fichero;
@@ -410,7 +574,7 @@ else
 /**
   Esta funcion elimina los caracteres pendientes si es necesario
   Se usa junto con fgets para leer la entrada hasta cierta longitud
-*/
+
 void clear_if_Needed(char *str)
 {
   if (str[strlen(str) - 1] != '\n')
@@ -420,3 +584,4 @@ void clear_if_Needed(char *str)
     }
 }
 
+*/

@@ -70,6 +70,10 @@ void ficheroUsuario()
 
 void Usuario::ordenarUsuario(){
 
+if(leerUsuario()==1)
+{
+
+
     string line;
     ifstream myfile("usuario.txt");
     vector <string> usuarios;
@@ -92,7 +96,7 @@ void Usuario::ordenarUsuario(){
       
   myfile.close();
 
-
+}
 
 }
 int verificarUsuario(string nombre)
@@ -257,6 +261,122 @@ free(fichero);
 
 
 
+}
+void comprobar()
+{
+  
+
+if(leerUsuario()==0)
+{
+ printf("Primero debers introducir un usuario para iniciar sesion\n"); 
+
+}
+else
+{/*
+char* idUsuario;
+char* str;
+char* nombreFichero;
+FILE* file;
+int a;
+idUsuario = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+str = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+nombreFichero = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+*/
+FILE* file;
+cout << "Introduce el id del usuario que quieres buscar" << endl;
+string nombre;
+cin >> nombre;
+
+string fichero = nombre +".txt";
+/*
+fgets(str, MAX_LENGTH, stdin);
+sscanf(str, "%s\n",idUsuario);
+
+sprintf(nombreFichero, "%s.txt", idUsuario);
+*/
+
+
+if(!(fopen(fichero.c_str(), "r")))
+{
+  printf("El usuario que has introducido no existe\n");
+}
+else
+{
+  char a;
+  cout << "Bienvenido " << nombre << endl << endl;
+  
+  
+  file = fopen("jugadoresLibres.txt", "r");
+  cout << "Estos son los jugadores que tienes" << endl;
+   while ((a = fgetc(file)) != EOF)
+    {
+      if (a != '\n')
+      {
+   
+     
+      putchar(a);
+
+     
+      
+
+    
+  }
+  else{
+
+      printf("\n");
+  }
+  
+    }
+
+  //cerrar fichero
+  fclose(file);
+
+if(jugadoresLibres()==0)
+{
+
+
+  }
+  else
+  {
+    cout << "Quieres comprar alguno?" << endl;
+    string decision;
+    cin >> decision;
+    if(decision=="si")
+    {
+      cout << "Introduce el nombre del jugador que vas a comprar" << endl;
+      string jugador;
+      cin >> jugador;
+
+      ifstream myfile("jugadoresLibres.txt");
+      string line;
+
+      while(getline(myfile, line))
+      {
+        
+
+      }
+
+    }
+    else
+    {
+
+    }
+
+  }
+
+
+}
+
+
+/*
+free(idUsuario);
+free(str);
+free(nombreFichero);
+
+*/
+
+
+}
 }
 
 

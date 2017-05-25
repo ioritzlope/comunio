@@ -7,7 +7,7 @@
 #define MAX_PUNTOS 9
 
 
-/*
+
 
 int leerFichero()
 {
@@ -46,34 +46,36 @@ if(file=fopen("Jugadores.txt","r"))
  
 }
 
-void insertarJugador(char* str, char* str2, char* str3)
+void insertarJugador()
 {
   char nombre[MAX_LENGTH];
   char apellido[MAX_LENGTH];
   int numero=0;
 
   int len=0;
-  //char* str;
-  //str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  char* str;
+  str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
-  //char* str2;
-  //str2 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  char* str2;
+  str2 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
   
 
-  //char* str3;
-  //str3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  char* str3;
+  str3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
     char* fichero;
   fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+6);
 
 
   printf("\n");
-  //cout << "Introduce el nombre del jugador" << endl;
-  //fgets(str,MAX_LENGTH,stdin);
+  printf("Introduce el nombre del jugador\n");
+  fgets(str,MAX_LENGTH,stdin);
   sscanf(str,"%s",nombre);
-  //cout << "Datos introducidos hasta el momento" << endl;
+
+  printf("\nDatos introducidos hasta el momento\n");
+
+  printf("%s\n", nombre);
   
-   //cout << nombre << endl;
 
    sprintf(fichero, "%s_.txt", nombre);
    if(fopen(fichero, "r"))
@@ -84,27 +86,31 @@ void insertarJugador(char* str, char* str2, char* str3)
    else
    {
 
+printf("Ahora introduce apellido del jugador\n");
 
-   //cout << endl <<"Ahora introduce el apellido del jugador" << endl;
-
-   //fgets(str2,MAX_LENGTH,stdin);
+   fgets(str2,MAX_LENGTH,stdin);
   sscanf(str2,"%[^\n]s",apellido);
-  sscanf(str3,"%i",&numero);
- // cout << "Datos introducidos hasta el momento" << endl;
   
-   //cout << nombre << endl;
- 
- //  cout << apellido << endl;
 
-   //cout << endl << "Introduce los puntos de este jugador" << endl;
+ printf("\nDatos introducidos hasta el momento\n");
+  printf("%s\n", nombre);
+   printf("%s\n", apellido);
 
-   //cin >> numero;
-  //cout << "Datos introducidos hasta el momento" << endl;
-  
-   //cout << nombre << endl;
- 
- //  cout << apellido << endl;
-   //cout << numero << endl;
+printf("Introduce los puntos de este jugador\n");
+
+fgets(str3, MAX_LENGTH, stdin);
+sscanf(str3,"%i",&numero);
+if(numero>MAX_PUNTOS)
+{
+  numero = MAX_PUNTOS;
+  printf("Has superado el limite maximo de puntos\n");
+  printf("Se le asignaran 9 puntos al jugador\n");
+}
+
+printf("Datos introducidos hasta el momento\n");
+  printf("%s\n", nombre);
+   printf("%s\n", apellido);
+   printf("%i\n", numero);
 
 pasarDatosAFichero(nombre,apellido,numero);
 }
@@ -117,6 +123,7 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
   FILE * file;
   FILE * file2;
   FILE * file3;
+  FILE * file4;
 
   char * fichero;
   fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+6);
@@ -144,7 +151,7 @@ printf("Jugador guardado correctamente%s\n" );
   {
     file = fopen("Jugadores.txt", "a");
      fprintf(file, "%s, %s\n", nom, apellido);
-printf("Jugador guardado correctamente%s\n");
+printf("Jugador guardado correctamente\n");
 
 
   }
@@ -160,7 +167,7 @@ if(! (file2 = fopen(fichero, "r")))
     file2 = fopen(fichero, "w");
     fprintf(file2, "%i\n", num);
      
-printf("Asignacion de puntos al jugador satisfactorio%s\n" );
+printf("Asignacion de puntos al jugador satisfactorio\n" );
   
   }
   else
@@ -171,31 +178,49 @@ printf("Asignacion de puntos al jugador satisfactorio%s\n" );
 fclose(file2);
      
 
-  
-clear_if_Needed(str);
+  printf("Asignar este jugador a usuario: SI/NO\n" );
+
+  char* resp = (char*) malloc(sizeof(char)*MAX_LENGTH)+1;
+   char* resp2 = (char*) malloc(sizeof(char)*MAX_LENGTH)+1;
+  fgets(resp, MAX_LENGTH, stdin);
+  int len = sscanf(resp, "%s\n", resp2);
+  char decision [3];
+  strcpy(decision, "si");
 
 
-  printf("Asignar este jugador a usuario: SI/NO%s\n" );
-
- string resp;
-
-cin >> resp;
-
-if(resp =="no")
+if(strcmp(resp2, decision)!=0)
 {
-   cout << "Jugador no asignado a ningun usuario";
+   
+   printf("Jugador no asignado a ningun usuario\n");
+   if(! (file4 = fopen("jugadoresLibres.txt", "r")))
+  {
+    file4 = fopen("jugadoresLibres.txt", "w");
+    fprintf(file4, "%s, %s\n", nom, apellido);
+   
+     
+  }
+  else
+  {
+    file4 = fopen("jugadoresLibres.txt", "a");
+    fprintf(file4, "%s, %s\n", nom, apellido);
+  }
+
+     
 
 }
 else
 {
-  cout << "A que usuario le quieres asignar?" << endl;
+  printf("A que usuario le quieres asignar?\n");
 
-  clear_if_Needed(str);
+  //clear_if_Needed(resp2);
 
-  fgets(str,MAX_LENGTH,stdin);
-  sscanf(str, "%s\n", nombre);
+char* nombre = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
+char* nombre2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
 
-  sprintf(fichero3, "%s.txt", nombre);
+  fgets(nombre,MAX_LENGTH,stdin);
+  sscanf(nombre, "%s\n", nombre2);
+
+  sprintf(fichero3, "%s.txt", nombre2);
 
 
 
@@ -212,20 +237,22 @@ else
   }
 fclose(file3);
 free(fichero);
-
+free(resp);
+free(resp2);
+free(nombre2);
 free(fichero3);
 free(str);
 free(nombre);
-
+fclose(file4);
 
 }
 }
 
 void verPuntosJugador(char* str)
 {
- /* if(leerFichero()==0)
+  if(leerFichero()==0)
   {
-    cout << "Tendras que introducir jugadores" << endl;
+    printf("Tendras que introducir jugadores\n");
   }
   
  // char* str;
@@ -311,13 +338,13 @@ free(nombre);
 
 }
 
+
 void puntuarJugador()
 {
   
  if( leerFichero()==0)
  {
-
-  cout << "Tendras que intrducir jugadores" << endl;
+printf("Tendras que intrducir jugadores\n");
 
  }
  else
@@ -400,10 +427,10 @@ else
 
 
 
-/**
+/*
   Esta funcion elimina los caracteres pendientes si es necesario
   Se usa junto con fgets para leer la entrada hasta cierta longitud
-
+*/
 void clear_if_Needed(char *str)
 {
   if (str[strlen(str) - 1] != '\n')
@@ -413,4 +440,3 @@ void clear_if_Needed(char *str)
     }
 }
 
-*/

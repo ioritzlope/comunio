@@ -10,12 +10,7 @@ using namespace std;
 int main(void)
 {
 
-/*
-	printf("Proyecto nuevo en C\n");
-	printf("---------------------\n");
 
-printf("\nBinvenido! Quieres convertirte en el mejor entrenador?\n");
-*/
 	cout << "Proyecto nuevo en C++ " << endl;
 	cout << "Binvenido! Quieres convertirte en el mejor entrenador?" << endl;
 	

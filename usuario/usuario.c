@@ -60,6 +60,42 @@ fclose(file);
 
 }
 
+int jugadoresLibres()
+{
+  FILE* file;
+
+
+   char c;
+   
+
+if(file=fopen("jugadoresLibres.txt","r"))
+{
+  printf("\nEstos son los jugadores que estan libres\n");
+
+    while ((c = fgetc(file)) != EOF)
+    {
+
+      if (c != '\n')
+      putchar(c);
+    else
+    {
+      printf("\n");
+    }
+    }
+    return 1;
+ }
+
+ else
+ {
+  printf("No hay ningun jugador libre en el sistema\n");
+  return 0;
+
+ }
+  //cerrar fichero
+  fclose(file);
+
+
+}
 
 
 
@@ -111,77 +147,4 @@ if(f = fopen("usuario.txt", "r"))
 
 }
 //tiene que comprobar una cadena de caracteres (el fichero usuario(id)) con otra cadena del que le mete el usuario. 
-void comprobar()
-{
-  
 
-if(leerUsuario()==0)
-{
- printf("Primero debers introducir un usuario para iniciar sesion\n"); 
-
-}
-else
-{
-char* idUsuario;
-char* str;
-char* nombreFichero;
-FILE* file;
-int a;
-idUsuario = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
-str = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
-nombreFichero = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
-printf("Introduce el id del usuario que quieres buscar\n");
-fgets(str, MAX_LENGTH, stdin);
-sscanf(str, "%s\n",idUsuario);
-sprintf(nombreFichero, "%s.txt", idUsuario);
-
-
-
-if(!(fopen(nombreFichero, "r")))
-{
-  printf("El usuario que has introducido no existe\n");
-}
-else
-{
-  printf("Bienvenido %s\n", idUsuario);
-  printf("\n");
-  printf("Estos son los jugadores que tienes\n");
-  file = fopen(nombreFichero, "r");
-   while ((a = fgetc(file)) != EOF)
-    {
-      if (a != '\n')
-      {
-   
-     
-      putchar(a);
-
-     
-      
-
-    
-  }
-  else{
-
-      printf("\n");
-  }
-  
-    }
-
-
-  //cerrar fichero
-  fclose(file);
-
-
-}
-
-
-
-free(idUsuario);
-free(str);
-free(nombreFichero);
-
-
-
-
-}
-}

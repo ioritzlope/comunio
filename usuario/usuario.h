@@ -8,7 +8,8 @@ extern "C"{
 void clear_if_needed(char *str);
 void introducirid(char* fichero, char* str2);
 int leerUsuario();
-void comprobar();
+int jugadoresLibres();
+
 
 #ifdef __cplusplus
 
