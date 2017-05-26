@@ -251,8 +251,8 @@ u.ordenarUsuario();
 }
 void llamadaModificarUsuario()
 {
-	Usuario a;
-	string nombre;
+	Usuario *a=new Usuario;
+	
 	char* ayuda1;
 	char* ayuda2;
 	ayuda1=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
@@ -275,14 +275,14 @@ void llamadaModificarUsuario()
 
 		cout << "Que usuario quieres cambiar?" << endl;
 		
-		cin >> nombre;
-		a.setNombre(nombre);
+		cin >> *a;
+		
 
 
-		if(verificarUsuario(nombre)==0)
+		if(verificarUsuario(a->getNombre())==0)
 		{
 			
-		sscanf(nombre.c_str(), "%s\n",ayuda1);
+		sscanf(a->getNombre().c_str(), "%s\n",ayuda1);
         sprintf(ayuda2, "%s.txt", ayuda1);
 
         ifstream ifs(ayuda2);
@@ -299,10 +299,9 @@ void llamadaModificarUsuario()
        
 
 		cout << "Como quieres que se llame?" << endl;
-		string nuevoNombre;
-		cin >>nuevoNombre;
-
-		sscanf(nuevoNombre.c_str(), "%s\n",str2);
+		
+		cin>>*a;
+		sscanf(a->getNombre().c_str(), "%s\n",str2);
         sprintf(fichero, "%s.txt", str2);
         ofstream ofs(fichero);
 
@@ -313,7 +312,7 @@ void llamadaModificarUsuario()
 
 		ofs.close();
 
-		a.modificarUsuario(nuevoNombre);
+		a->modificarUsuario(a->getNombre());
 
 
 
