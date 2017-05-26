@@ -70,7 +70,7 @@ void ficheroUsuario()
 
 void Usuario::ordenarUsuario(){
 
-if(leerUsuario()==1)
+if(leerVerificar()==1)
 {
 
 
@@ -146,8 +146,8 @@ void Usuario::modificarUsuario(string nombre)
       if(usuarios[i].getNombre()==this->getNombre())
       {
 
-        Usuario c(nombre);
-        usuarios[i] = c;
+        
+        usuarios[i].setNombre(nombre);
         break;
       }
       
@@ -193,7 +193,7 @@ string line;
     remove("usuario.txt");
     sscanf(this->nombre.c_str(), "%s\n",ayuda4);
     sprintf(ayuda4, "%s.txt", fichero);
-    remove(fichero);
+    
 
 
     ofstream file("usuario.txt");
@@ -216,9 +216,9 @@ string line;
        file << usuarios[i] << endl;
 
 
-
-
     }
+remove(fichero);
+
 
         file.close();
   myfile.close();
@@ -240,15 +240,21 @@ void Usuario ::usuariojugador()
         sprintf(fichero, "%s.txt", str2);
 
       string line;
+      string escrito;
        ifstream myfile(fichero);
         
      
        while(getline(myfile,line))
        {
-      
+        
+        escrito = line;
 
        cout << line << endl;
       
+       }
+       if(escrito == "")
+       {
+        cout << "Este usuario no tiene jugadores" << endl;
        }
 
       
@@ -266,7 +272,7 @@ void comprobar()
 {
   
 
-if(leerUsuario()==0)
+if(leerVerificar()==0)
 {
  printf("Primero debers introducir un usuario para iniciar sesion\n"); 
 
@@ -282,8 +288,8 @@ idUsuario = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 str = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 nombreFichero = (char *)malloc((sizeof(char)*MAX_LENGTH)+1);
 */
-FILE* file;
-cout << "Introduce el id del usuario que quieres buscar" << endl;
+
+cout << "Introduce tu id para iniciar sesion" << endl;
 string nombre;
 cin >> nombre;
 
@@ -302,81 +308,12 @@ if(!(fopen(fichero.c_str(), "r")))
 }
 else
 {
-  char a;
-  cout << "Bienvenido " << nombre << endl << endl;
+ 
+  cout << "Bienvenido " << nombre << "!" << endl << endl;
+
   
-  
-  file = fopen("jugadoresLibres.txt", "r");
-  cout << "Estos son los jugadores que tienes" << endl;
-   while ((a = fgetc(file)) != EOF)
-    {
-      if (a != '\n')
-      {
-   
-     
-      putchar(a);
-
-     
-      
-
-    
   }
-  else{
-
-      printf("\n");
-  }
-  
-    }
-
-  //cerrar fichero
-  fclose(file);
-
-if(jugadoresLibres()==0)
-{
-
-
-  }
-  else
-  {
-    cout << "Quieres comprar alguno?" << endl;
-    string decision;
-    cin >> decision;
-    if(decision=="si")
-    {
-      cout << "Introduce el nombre del jugador que vas a comprar" << endl;
-      string jugador;
-      cin >> jugador;
-
-      ifstream myfile("jugadoresLibres.txt");
-      string line;
-
-      while(getline(myfile, line))
-      {
-        
-
-      }
-
-    }
-    else
-    {
-
-    }
-
-  }
-
-
-}
-
-
-/*
-free(idUsuario);
-free(str);
-free(nombreFichero);
-
-*/
-
-
-}
+ }
 }
 
 

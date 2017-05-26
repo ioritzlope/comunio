@@ -54,13 +54,15 @@ char str[MAX_LENGTH];
 		printf("\t10.Eliminar usuario\n");
 		printf("\t11.Ver jugadores que tiene un usuario\n");
 		printf("\t12.Ver jugadores registrados con sus puntos\n");
+		printf("\t13.Modificar Jugador\n");
+		printf("\t14.Eliminar Jugador\n");
 		printf("Seleccione una opción (q para salir): ");
 
 		fgets(str, MAX_LENGTH, stdin);
 		clear_if_needed(str);
 		len = sscanf(str, "%i", &option);
 		printf("\n");
-	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 12 || option < 1)));
+	} while ((len == 0 && str[0] != 'q') || (len > 0 && (option > 14 || option < 1)));
 
 	return (str[0] == 'q')?0:option;
 
@@ -155,7 +157,7 @@ switch(opcion)
 
 		printf("puntos jugador\n");
 
-		 if(leerFichero()==0)
+		 if(leerVerificarJ()==0)
   		{
    		 printf("Tendras que introducir jugadores\n");
   		}
@@ -233,6 +235,23 @@ switch(opcion)
 	cout << "Has decidido ver la clasificacion de mejores jugadores" << endl;
 	llamadaPuntosJugador();
 	ventanaInicial();
+	break;
+
+	case 13:
+
+	cout << "Has decidido modificar Jugador" << endl;
+	llamadaModificarJugador();
+	ventanaInicial();
+	break;
+
+
+	case 14:
+	cout << "Has decidido eliminar Jugador" << endl;
+	llamadaEliminarJugador();
+	ventanaInicial();
+	break;
+
+
 
 
 }
@@ -264,7 +283,7 @@ void llamadaModificarUsuario()
 	vector <string> jugadores;
 
 
-	if(leerUsuario()==0)
+	if(leerVerificar()==0)
 	{
 		cout << "Primero debes introducir usuarios" << endl;
 	}
@@ -274,6 +293,7 @@ void llamadaModificarUsuario()
 		
 
 		cout << "Que usuario quieres cambiar?" << endl;
+		leerUsuario();
 		
 		cin >> *a;
 		
@@ -299,10 +319,18 @@ void llamadaModificarUsuario()
        
 
 		cout << "Como quieres que se llame?" << endl;
+
 		
-		cin>>*a;
-		sscanf(a->getNombre().c_str(), "%s\n",str2);
-        sprintf(fichero, "%s.txt", str2);
+	string nuevoNombre;
+		do
+		{
+			cout << "Introduce un nombre que no este en el sistema" << endl;
+			
+		cin >> nuevoNombre;
+
+		}while(verificarUsuario(nuevoNombre)==0);
+
+        sprintf(fichero, "%s.txt", nuevoNombre.c_str());
         ofstream ofs(fichero);
 
         for (int i=0;i< jugadores.size();i++)
@@ -312,11 +340,11 @@ void llamadaModificarUsuario()
 
 		ofs.close();
 
-		a->modificarUsuario(a->getNombre());
+		a->modificarUsuario(nuevoNombre);
 
 
 
-		cout<<"usuario eliminado correctamente"<<endl;
+		cout<<"usuario modificado correctamente"<<endl;
 		}
 		else
 		{
@@ -325,13 +353,114 @@ void llamadaModificarUsuario()
 		
 	}
 	remove(ayuda2);
+	delete a;
+	free(ayuda1);
+	free(ayuda2);
+	free(str2);
+	free(fichero);
+
+	
 }
+void llamadaModificarJugador()
+{
+
+	Jugador *a=new Jugador;
+	
+	char* ayuda1;
+	char* ayuda2;
+	ayuda1=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+	ayuda2=(char *)malloc((sizeof(char)*MAX_LENGTH)+1);
+	char *str2;
+	char *fichero;
+	str2 =(char*) malloc ((sizeof(char)*MAX_LENGTH)+1);
+	fichero=(char*) malloc ((sizeof(char)*MAX_LENGTH)+5);
+	vector <string> puntos;
+
+
+	if(leerVerificarJ()==0)
+	{
+		cout << "Primero debes introducir jugadores" << endl;
+	}
+
+	else
+	{	
+		
+
+		cout << "Que jugador quieres cambiar?" << endl;
+		leerFichero();
+		
+		cin >> *a;
+		
+
+
+		if(verificarJugador(a->getNombre())==0)
+		{
+			
+		sscanf(a->getNombre().c_str(), "%s\n",ayuda1);
+        sprintf(ayuda2, "%s_.txt", ayuda1);
+
+        ifstream ifs(ayuda2);
+        string line;
+
+        while(getline(ifs,line))
+        {
+        	puntos.push_back(line);
+        }
+         ifs.close();
+         
+         
+
+       
+
+		cout << "Como quieres que se llame?" << endl;
+		string nuevoNombre;
+		do
+		{
+			cout << "Introduce un nombre que no este en el sistema" << endl;
+			
+		cin >> nuevoNombre;
+
+		}while(verificarJugador(nuevoNombre)==0);
+        sprintf(fichero, "%s_.txt", nuevoNombre.c_str());
+        ofstream ofs(fichero);
+
+        for (int i=0;i< puntos.size();i++)
+        {
+        	ofs << puntos[i] << endl;
+        }      
+
+		ofs.close();
+
+		a->modificarJugador(nuevoNombre);
+
+
+
+		cout<<"jugador modificado correctamente"<<endl;
+		}
+		else
+		{
+			cout << "jugador no encontrado" << endl;
+		}
+		
+	}
+	remove(ayuda2);
+	delete a;
+	free(ayuda1);
+	free(ayuda2);
+	free(str2);
+	free(fichero);
+
+	
+}
+
+
+
 void llamadaeliminarusuario(){
 string nombre;
 
 
 	Usuario *c=new Usuario("");
-if(leerUsuario()==0){
+if(leerVerificar()==0){
 
 	cout<<"primero introduzca un usuario"<<endl;
 }
@@ -339,6 +468,7 @@ else{
 
 
 cout<<"Introduzca el nombre del usuario que quieres eliminar"<<endl;
+leerUsuario();
 //cin>>nombre;
 cin>>*c;
 if(verificarUsuario(c->getNombre())==0){
@@ -359,8 +489,47 @@ else{
 
 }
 
+delete c;
 
 
+}
+void llamadaEliminarJugador()
+{
+
+	string nombre;
+
+
+	Jugador *c=new Jugador();
+if(leerVerificarJ()==0){
+
+	cout<<"primero introduzca un jugador"<<endl;
+}
+else{
+
+
+cout<<"Introduzca el nombre del jugador que quieres eliminar"<<endl;
+leerFichero();
+//cin>>nombre;
+cin>>*c;
+if(verificarJugador(c->getNombre())==0){
+	cout<<"usuario encontrado"<<endl;
+	c->eliminarJugador();
+	cout<<"....Usuario correctamente eliminado"<<endl;
+
+}
+else{
+
+
+	cout<<"usuario no encontrado"<<endl;
+}
+
+
+
+
+
+}
+
+delete c;
 
 }
 void llamadausuariojugador()
@@ -369,12 +538,13 @@ void llamadausuariojugador()
 	Usuario *usu=new Usuario("");
 
 string nombre;
-if(leerUsuario()==0){
+if(leerVerificar()==0){
 
 	cout<<"primero introduzca un usuario"<<endl;
 }
 else{
-	cout<<"¿De que usuario quieres ver?"<<endl;
+	cout<<"De que usuario quieres ver?"<<endl;
+	leerUsuario();
 	//cin>>nombre;
 	cin>>*usu;
 
@@ -391,7 +561,7 @@ else{
 }
 
 
-
+delete usu;
 
 }
 
@@ -402,3 +572,5 @@ void llamadaPuntosJugador()
 
 
 }
+
+

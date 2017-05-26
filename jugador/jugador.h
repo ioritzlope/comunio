@@ -5,7 +5,8 @@
 extern "C"{
 	#endif
 
-int leerFichero();
+void leerFichero();
+int leerVerificarJ();
 void insertarJugador();
 void verPuntosJugador(char* str);
 void puntuarJugador();

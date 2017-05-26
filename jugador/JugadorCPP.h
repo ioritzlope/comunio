@@ -27,10 +27,15 @@ public:
 	void setPuntos(int puntos);
 
 	void verPuntosJugador();
+	void modificarJugador(string nombre);
+	void eliminarJugador();
 
 
 
 };
+ istream& operator>>(istream &in, Jugador &p);
+ int verificarJugador(string nombre);
+
 
 /*
 int leerFichero();

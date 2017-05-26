@@ -7,7 +7,8 @@ extern "C"{
 	#endif 
 void clear_if_needed(char *str);
 void introducirid(char* fichero, char* str2);
-int leerUsuario();
+void leerUsuario();
+int leerVerificar();
 int jugadoresLibres();
 
 

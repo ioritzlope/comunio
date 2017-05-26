@@ -14,6 +14,8 @@ void llamadaModificarUsuario();
 void llamadaeliminarusuario();
 void llamadausuariojugador();
 void llamadaPuntosJugador();
+void llamadaModificarJugador();
+void llamadaEliminarJugador();
 #ifdef __cplusplus
 
 }

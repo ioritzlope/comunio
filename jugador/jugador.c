@@ -9,7 +9,7 @@
 
 
 
-int leerFichero()
+void leerFichero()
 {
 	 FILE* file;
 
@@ -31,6 +31,31 @@ if(file=fopen("Jugadores.txt","r"))
       printf("\n");
     }
     }
+    
+ }
+
+ else
+ {
+  printf("No hay ningun jugador guardado en el sistema\n");
+  
+
+ }
+  //cerrar fichero
+  fclose(file);
+
+ 
+}
+int leerVerificarJ()
+{
+   FILE* file;
+
+
+   char c;
+   
+
+if(file=fopen("Jugadores.txt","r"))
+{
+  
     return 1;
  }
 
@@ -45,7 +70,6 @@ if(file=fopen("Jugadores.txt","r"))
 
  
 }
-
 void insertarJugador()
 {
   char nombre[MAX_LENGTH];
@@ -123,20 +147,19 @@ void pasarDatosAFichero(char* nom, char* apellido, int num)
   FILE * file;
   FILE * file2;
   FILE * file3;
-  FILE * file4;
+  
 
   char * fichero;
   fichero = (char*)malloc((sizeof(char)*MAX_LENGTH)+6);
 
-  char * nombre;
-  nombre = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
   char * str;
   str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
 
   char * fichero3;
   fichero3 = (char*)malloc((sizeof(char)*MAX_LENGTH)+5);
-
+char* nombre3 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
+char* nombre2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
     
 
 
@@ -190,7 +213,7 @@ fclose(file2);
 
 if(strcmp(resp2, decision)!=0)
 {
-   
+   /*
    printf("Jugador no asignado a ningun usuario\n");
    if(! (file4 = fopen("jugadoresLibres.txt", "r")))
   {
@@ -204,7 +227,8 @@ if(strcmp(resp2, decision)!=0)
     file4 = fopen("jugadoresLibres.txt", "a");
     fprintf(file4, "%s, %s\n", nom, apellido);
   }
-
+*/
+  printf("Jugador en estado AGENTE LIBRE\n");
      
 
 }
@@ -214,11 +238,10 @@ else
 
   //clear_if_Needed(resp2);
 
-char* nombre = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
-char* nombre2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
 
-  fgets(nombre,MAX_LENGTH,stdin);
-  sscanf(nombre, "%s\n", nombre2);
+
+  fgets(nombre3,MAX_LENGTH,stdin);
+  sscanf(nombre3, "%s\n", nombre2);
 
   sprintf(fichero3, "%s.txt", nombre2);
 
@@ -232,7 +255,7 @@ char* nombre2 = (char*) malloc (sizeof(char)*MAX_LENGTH)+1;
   {
   file3 = fopen(fichero3, "a");
   fprintf(file3, "%s, %s\n", nom, apellido);
-  printf("Se ha asignado el jugador %s al usuario %s\n", nom, nombre );
+  printf("Asignacion completada satisfactoriamente\n");
  
   }
 fclose(file3);
@@ -242,15 +265,15 @@ free(resp2);
 free(nombre2);
 free(fichero3);
 free(str);
-free(nombre);
-fclose(file4);
+free(nombre3);
+
 
 }
 }
 
 void verPuntosJugador(char* str)
 {
-  if(leerFichero()==0)
+  if(leerVerificarJ()==0)
   {
     printf("Tendras que introducir jugadores\n");
   }
@@ -342,7 +365,7 @@ free(nombre);
 void puntuarJugador()
 {
   
- if( leerFichero()==0)
+ if( leerVerificarJ()==0)
  {
 printf("Tendras que intrducir jugadores\n");
 

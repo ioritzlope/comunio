@@ -99,7 +99,7 @@ if(file=fopen("jugadoresLibres.txt","r"))
 
 
 
-int leerUsuario()
+void leerUsuario()
 {
   
   
@@ -112,6 +112,7 @@ int leerUsuario()
 
 if(f = fopen("usuario.txt", "r"))
  {
+
  printf("Estos son los usuarios guardados en el sistema\n"); 
   
   //leer mientras no se llegue al final del fichero EOF
@@ -132,7 +133,36 @@ if(f = fopen("usuario.txt", "r"))
   
     }
 
-    return 1;
+    
+  } 
+
+  else
+  {
+   printf("Todavia no hay ningun usuario registrado\n"); 
+   
+  }
+
+  //cerrar fichero
+  fclose(f);
+
+
+}
+int leerVerificar()
+{
+  
+  
+  
+   FILE* f;
+  char c;
+ 
+  
+  //abrir fichero para lectura
+
+if(f = fopen("usuario.txt", "r"))
+ {
+  return 1;
+  
+ 
   } 
 
   else
