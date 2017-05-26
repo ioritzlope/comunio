@@ -279,6 +279,7 @@ if(leerVerificar()==0)
 }
 else
 {/*
+
 char* idUsuario;
 char* str;
 char* nombreFichero;
@@ -314,6 +315,7 @@ else
   
   }
  }
+
 }
 
 

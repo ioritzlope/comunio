@@ -129,8 +129,6 @@ switch(opcion)
 	case 2: 
 
 		printf("Has elegido introducir iniciar sesión\n");
-
-		
 		comprobar();
 		ventanaInicial();
 		break;
@@ -190,7 +188,7 @@ switch(opcion)
 	case 7: 
 
 		printf("Has elegido la opcion de puntuar a jugador\n");
-
+		leerFichero();
 		puntuarJugador();
 		ventanaInicial();
 		break;
@@ -208,48 +206,48 @@ switch(opcion)
 
 	case 9:
 
-	cout << "Has elegido modificar usuario por nombre" << endl;
+		cout << "Has elegido modificar usuario por nombre" << endl;
 
-	llamadaModificarUsuario();
+		llamadaModificarUsuario();
 	
-	ventanaInicial();
-	break;
+		ventanaInicial();
+		break;
 	
 	case 10:
 
-	cout<<"Has elegido eliminar usuario por nombre"<<endl;
+		cout<<"Has elegido eliminar usuario por nombre"<<endl;
 
-	llamadaeliminarusuario();
-	ventanaInicial();
-	break;
+		llamadaeliminarusuario();
+		ventanaInicial();
+		break;
 
 	case 11:
 
-	cout<<"Has elegido ver los jugadores de cada usuario";
-	llamadausuariojugador();
-	ventanaInicial();
+		cout<<"Has elegido ver los jugadores de cada usuario";
+		llamadausuariojugador();
+		ventanaInicial();
 
 	break;
 
 	case 12:
-	cout << "Has decidido ver la clasificacion de mejores jugadores" << endl;
-	llamadaPuntosJugador();
-	ventanaInicial();
-	break;
+		cout << "Has decidido ver la clasificacion de mejores jugadores" << endl;
+		llamadaPuntosJugador();
+		ventanaInicial();
+		break;
 
 	case 13:
 
-	cout << "Has decidido modificar Jugador" << endl;
-	llamadaModificarJugador();
-	ventanaInicial();
-	break;
+		cout << "Has decidido modificar Jugador" << endl;
+		llamadaModificarJugador();
+		ventanaInicial();
+		break;
 
 
 	case 14:
-	cout << "Has decidido eliminar Jugador" << endl;
-	llamadaEliminarJugador();
-	ventanaInicial();
-	break;
+		cout << "Has decidido eliminar Jugador" << endl;
+		llamadaEliminarJugador();
+		ventanaInicial();
+		break;
 
 
 
@@ -266,6 +264,8 @@ void llamadaOrdenarUsuarios()
 
 
 u.ordenarUsuario();
+
+leerUsuario();
 	
 }
 void llamadaModificarUsuario()

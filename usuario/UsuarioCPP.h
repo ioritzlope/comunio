@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void comprobar();
+
 class Usuario
 {
 private:
@@ -27,11 +27,12 @@ public:
 	void modificarUsuario(string nombre);
 	void eliminarUsuario();
 	void usuariojugador();
-	
+
 	
 
 	
 };
+	void comprobar();
 void ficheroUsuario();
 int verificarUsuario(string nombre);
  istream& operator>>(istream &in, Usuario &p);
