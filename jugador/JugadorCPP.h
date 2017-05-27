@@ -37,13 +37,6 @@ public:
  int verificarJugador(string nombre);
 
 
-/*
-int leerFichero();
-void insertarJugador();
-void verPuntosJugador(char* str);
-void puntuarJugador();
-void pasarDatosAFichero(char* nom, char* apellido, int num);
-void clear_if_Needed(char *str);
-*/
+
 
 #endif

@@ -121,7 +121,7 @@ switch(opcion)
  		 free(fichero);
 
 
-		//introducirid();
+	
  		ventanaInicial();
  		break;
 
@@ -171,7 +171,7 @@ switch(opcion)
 
   			}
 
-		//verPuntosJugador();
+		
 		ventanaInicial();
 		break;
 	
@@ -469,7 +469,7 @@ else{
 
 cout<<"Introduzca el nombre del usuario que quieres eliminar"<<endl;
 leerUsuario();
-//cin>>nombre;
+
 cin>>*c;
 if(verificarUsuario(c->getNombre())==0){
 	cout<<"usuario encontrado"<<endl;
@@ -509,7 +509,7 @@ else{
 
 cout<<"Introduzca el nombre del jugador que quieres eliminar"<<endl;
 leerFichero();
-//cin>>nombre;
+
 cin>>*c;
 if(verificarJugador(c->getNombre())==0){
 	cout<<"usuario encontrado"<<endl;
