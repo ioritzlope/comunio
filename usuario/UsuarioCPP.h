@@ -34,6 +34,7 @@ public:
 };
 	void comprobar();
 void ficheroUsuario();
+int ficheroUsuarioVacio();
 int verificarUsuario(string nombre);
  istream& operator>>(istream &in, Usuario &p);
 

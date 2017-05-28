@@ -7,6 +7,7 @@ using namespace std;
 
 
 int leerPuntosJugador(string fichero);
+int comprobarFicheroVacio();
 class Jugador
 {
 private:

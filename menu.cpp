@@ -129,7 +129,15 @@ switch(opcion)
 	case 2: 
 
 		printf("Has elegido introducir iniciar sesión\n");
-		comprobar();
+		if(ficheroUsuarioVacio()==1)
+			{
+				cout << "Primero introduce usuarios, por favor" << endl;
+			}
+		else
+			{
+				comprobar();
+
+			}
 		ventanaInicial();
 		break;
 
@@ -138,7 +146,17 @@ switch(opcion)
 
 		printf("Has elegido ver los usuarios registrados\n");
 
-		leerUsuario();
+		if(ficheroUsuarioVacio()==1)
+			{
+				cout << "Primero introduce usuarios, por favor" << endl;
+			}
+		else
+			{
+				leerUsuario();
+
+			}
+
+		
 		ventanaInicial();
 		break;
 	
@@ -153,9 +171,9 @@ switch(opcion)
 
 	case 5: 
 
-		printf("puntos jugador\n");
+		printf("Has elegido la opcion de ver puntos por jugador\n");
 
-		 if(leerVerificarJ()==0)
+		 if(comprobarFicheroVacio()==1)
   		{
    		 printf("Tendras que introducir jugadores\n");
   		}
@@ -163,7 +181,9 @@ switch(opcion)
 
   		char* str;
   		str = (char*)malloc((sizeof(char)*MAX_LENGTH)+1);
+  		leerFichero();
   		printf("Introduce el nombre del jugador que quieres ver sus puntos\n");
+
   		fgets(str, MAX_LENGTH, stdin);
 
   		verPuntosJugador(str);
@@ -180,7 +200,17 @@ switch(opcion)
 
 		printf("Has elegido la opcion de ver todos los jugadores guardados\n");
 
-		leerFichero();
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				leerFichero();
+
+			}
+
+		
 		ventanaInicial();
 		break;
 	
@@ -188,8 +218,17 @@ switch(opcion)
 	case 7: 
 
 		printf("Has elegido la opcion de puntuar a jugador\n");
-		leerFichero();
-		puntuarJugador();
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				leerFichero();
+				puntuarJugador();
+
+			}
+		
 		ventanaInicial();
 		break;
 
@@ -198,7 +237,16 @@ switch(opcion)
 
 		printf("Has elegido ordenar usuarios por nombre\n");
 		
-		llamadaOrdenarUsuarios();
+		if(ficheroUsuarioVacio()==1)
+			{
+				cout << "Primero introduce usuarios, por favor" << endl;
+			}
+			else
+			{
+				llamadaOrdenarUsuarios();
+
+			}
+
 		ventanaInicial();
 
 		break;
@@ -207,9 +255,16 @@ switch(opcion)
 	case 9:
 
 		cout << "Has elegido modificar usuario por nombre" << endl;
+		if(ficheroUsuarioVacio()==1)
+			{
+				cout << "Primero introduce usuarios, por favor" << endl;
+			}
+			else
+			{
+				llamadaModificarUsuario();
 
-		llamadaModificarUsuario();
-	
+			}
+
 		ventanaInicial();
 		break;
 	
@@ -217,35 +272,75 @@ switch(opcion)
 
 		cout<<"Has elegido eliminar usuario por nombre"<<endl;
 
-		llamadaeliminarusuario();
+		if(ficheroUsuarioVacio()==1)
+			{
+				cout << "Primero introduce usuarios, por favor" << endl;
+			}
+			else
+			{
+				llamadaeliminarusuario();
+
+			}
 		ventanaInicial();
 		break;
 
 	case 11:
 
-		cout<<"Has elegido ver los jugadores de cada usuario";
-		llamadausuariojugador();
+		cout<<"Has elegido ver los jugadores de cada usuario" << endl;
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				llamadausuariojugador();
+
+			}
 		ventanaInicial();
 
 	break;
 
 	case 12:
 		cout << "Has decidido ver la clasificacion de mejores jugadores" << endl;
-		llamadaPuntosJugador();
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				llamadaPuntosJugador();
+
+			}
 		ventanaInicial();
 		break;
 
 	case 13:
 
 		cout << "Has decidido modificar Jugador" << endl;
-		llamadaModificarJugador();
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				llamadaModificarJugador();
+
+			}
 		ventanaInicial();
 		break;
 
 
 	case 14:
 		cout << "Has decidido eliminar Jugador" << endl;
-		llamadaEliminarJugador();
+		if(comprobarFicheroVacio()==1)
+			{
+				cout << "Primero introduce jugadores, por favor" << endl;
+			}
+			else
+			{
+				llamadaEliminarJugador();
+
+			}
 		ventanaInicial();
 		break;
 
@@ -283,7 +378,7 @@ void llamadaModificarUsuario()
 	vector <string> jugadores;
 
 
-	if(leerVerificar()==0)
+	if(leerVerificar() ==0)
 	{
 		cout << "Primero debes introducir usuarios" << endl;
 	}
@@ -342,9 +437,10 @@ void llamadaModificarUsuario()
 
 		a->modificarUsuario(nuevoNombre);
 
-
+		remove(ayuda2);
 
 		cout<<"usuario modificado correctamente"<<endl;
+
 		}
 		else
 		{
@@ -352,7 +448,7 @@ void llamadaModificarUsuario()
 		}
 		
 	}
-	remove(ayuda2);
+	
 	delete a;
 	free(ayuda1);
 	free(ayuda2);
@@ -512,15 +608,16 @@ leerFichero();
 
 cin>>*c;
 if(verificarJugador(c->getNombre())==0){
-	cout<<"usuario encontrado"<<endl;
+	cout<<"jugador encontrado"<<endl;
 	c->eliminarJugador();
-	cout<<"....Usuario correctamente eliminado"<<endl;
+
+	cout<<"....Jugador correctamente eliminado"<<endl;
 
 }
 else{
 
 
-	cout<<"usuario no encontrado"<<endl;
+	cout<<"Jugador no encontrado"<<endl;
 }
 
 

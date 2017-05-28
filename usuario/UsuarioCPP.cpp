@@ -32,15 +32,35 @@ void ficheroUsuario()
    
    
 
-
-   
-
-
-
- 
-
 }
 
+int ficheroUsuarioVacio()
+{
+
+      string line;
+      string escrito;
+       ifstream myfile("usuario.txt");
+        
+     
+       while(getline(myfile,line))
+       {
+        
+        escrito = line;
+
+      
+      
+       }
+       if(escrito == "")
+       {
+        
+        return 1;
+       }
+
+      
+  
+myfile.close();
+return 0;
+}
 void Usuario::ordenarUsuario(){
 
 if(leerVerificar()==1)
@@ -254,6 +274,7 @@ else
 {
 
 cout << "Introduce tu id para iniciar sesion" << endl;
+leerUsuario();
 string nombre;
 cin >> nombre;
 

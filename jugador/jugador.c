@@ -50,7 +50,7 @@ int leerVerificarJ()
    FILE* file;
 
 
-   char c;
+   
    
 
 if(file=fopen("Jugadores.txt","r"))

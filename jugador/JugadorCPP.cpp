@@ -368,6 +368,38 @@ remove(fichero);
 
 }
 
+int comprobarFicheroVacio()
+{
+
+
+      string line;
+      string escrito;
+       ifstream myfile("Jugadores.txt");
+        
+     
+       while(getline(myfile,line))
+       {
+        
+        escrito = line;
+
+       
+      
+       }
+       if(escrito == "")
+       {
+        
+        return 1;
+       }
+
+      
+  
+myfile.close();
+return 0;
+  
+
+
+}
+
   istream& operator>>(istream &in, Jugador &p){
 
   string a;
